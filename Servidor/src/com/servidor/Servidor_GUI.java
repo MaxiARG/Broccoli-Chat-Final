@@ -7,7 +7,9 @@ import java.awt.SystemColor;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -64,9 +66,13 @@ public class Servidor_GUI extends JFrame {
 			}
 
 			private void iniciarServidorChat() throws IOException {
-				servidor = new Servidor(1234, jTextAreaLogs);
+				Properties prop= new Properties();
+				FileInputStream fis= new FileInputStream("PropiedadesDelServidor");
+				prop.load(fis);
+				String puerto=prop.getProperty("Puerto");
+				//FALTA VALIDAR
+				servidor = new Servidor(Integer.parseInt(puerto), jTextAreaLogs);
 				Thread tServidor = new Thread(servidor);
-				System.out.println("asdasdasdasda");
 				tServidor.start();
 			}
 		});
@@ -96,7 +102,14 @@ public class Servidor_GUI extends JFrame {
 		JMenu mnConfiguracion = new JMenu("Configuracion");
 		menuBar.add(mnConfiguracion);
 
-		JMenuItem mntmCambiarIp = new JMenuItem("Cambiar IP & Puerto");
+		JMenuItem mntmCambiarIp = new JMenuItem("Cambiar Puerto");
+		mntmCambiarIp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					GUI_ConfigurarIP conf= new GUI_ConfigurarIP();
+					conf.setVisible(true);
+			}
+		});
+		
 		mnConfiguracion.add(mntmCambiarIp);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.LIGHT_GRAY);

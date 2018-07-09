@@ -1,4 +1,4 @@
-package com.vista;
+package com.servidor;
 
 
 import java.awt.Dimension;
@@ -22,7 +22,6 @@ public class GUI_ConfigurarIP extends JFrame {
 
 	private static final long serialVersionUID = 1218498309310645564L;
 	private JPanel contentPane;
-	private JTextField ipField;
 	private JTextField puertoField;
 	private JButton btnOk;
 
@@ -44,38 +43,25 @@ public class GUI_ConfigurarIP extends JFrame {
 		setTitle("Configuracion");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 282, 230);
+		setBounds(100, 100, 294, 184);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		ipField = new JTextField();
-		ipField.setBounds(86, 49, 145, 20);
-		contentPane.add(ipField);
-		ipField.setColumns(10);
-		
 		puertoField = new JTextField();
 		puertoField.setColumns(10);
-		puertoField.setBounds(86, 96, 145, 20);
+		puertoField.setBounds(82, 39, 145, 20);
 		contentPane.add(puertoField);
 		
-		JLabel lblIp = new JLabel("IP: ");
-		lblIp.setBounds(30, 52, 46, 14);
-		contentPane.add(lblIp);
-		
 		JLabel lblPuerto = new JLabel("Puerto: ");
-		lblPuerto.setBounds(30, 102, 67, 14);
+		lblPuerto.setBounds(30, 42, 67, 14);
 		contentPane.add(lblPuerto);
 		
 		btnOk = new JButton("OK");
 
-		btnOk.setBounds(149, 137, 82, 23);
+		btnOk.setBounds(92, 70, 106, 63);
 		contentPane.add(btnOk);
-		
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(30, 137, 82, 23);
-		contentPane.add(btnCancelar);
 		
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
@@ -88,16 +74,13 @@ public class GUI_ConfigurarIP extends JFrame {
 		//Boton OK
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String ip= ipField.getText();
 				String puerto= puertoField.getText();
 				
 				try {
 					Properties prop = new Properties();
-					FileOutputStream out = new FileOutputStream("PropiedadesDelCliente");
-					prop.setProperty("IP", ip);
+					FileOutputStream out = new FileOutputStream("PropiedadesDelServidor");
 					prop.setProperty("Puerto", puerto);
 					prop.store(out, "--Sin Comentarios--");
-					System.out.println("Se escribio el archivo de properties");
 					out.close();
 					setVisible(false);
 					dispose();
