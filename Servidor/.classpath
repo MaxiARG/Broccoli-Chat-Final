@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/Maxi/Downloads/h2-1.4.197.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/hibernate-core-3.3.2.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/asm-1.5.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/asm-attrs-1.5.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/cglib-2.1_3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/commons-collections-2.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/ehcache-1.2.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/proxool-0.8.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/javassist-3.12.1.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/log4j-api-2.11.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/slf4j-api-1.7.21.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/slf4j-simple-1.7.21.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
