@@ -100,8 +100,24 @@ public class GUI_Login extends JFrame {
 		JMenu mnMenu = new JMenu("Menu");
 		menuBar.add(mnMenu);
 		
-		JMenuItem mntmConfiguracionServidor = new JMenuItem("Configuracion Servidor");
+		JMenuItem mntmConfiguracionServidor = new JMenuItem("Cambiar IP");
+		mntmConfiguracionServidor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				GUI_ConfigurarIP gui_ip= new GUI_ConfigurarIP();
+				gui_ip.setVisible(true);
+			}
+		});
 		mnMenu.add(mntmConfiguracionServidor);
+		
+		JMenuItem mntmRegistrarUsuario = new JMenuItem("Registrar Usuario");
+		mntmRegistrarUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GUI_RegistrarUsuario registrar= new GUI_RegistrarUsuario();
+				registrar.setVisible(true);
+			}
+		});
+		mnMenu.add(mntmRegistrarUsuario);
 		
 		JMenuItem mntmSalir = new JMenuItem("Salir");
 		mnMenu.add(mntmSalir);
@@ -182,6 +198,4 @@ public class GUI_Login extends JFrame {
 	public void setBoton(boolean boton) {
 		this.boton = boton;
 	}
-	
-	
 }
