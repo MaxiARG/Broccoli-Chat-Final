@@ -1,3 +1,6 @@
 /com/
 /dataAccess/
 /hibernate.cfg.xml
+/Operacion.class
+/Pedido.class
+/Saludar.class

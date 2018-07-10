@@ -1,11 +1,11 @@
-package dataAccess;
+package com.dataAccess;
 
 import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 
-import com.db.Usuario;
+import com.modelo.Usuario;
 
 public class DAUsuario {
 	Session session;

@@ -1,4 +1,4 @@
-package dataAccess;
+package com.dataAccess;
 //jdbc:h2:D:\Chat Iteracion Final Workspace 2\Servidor/ChatDB
 public class TestHibernateORM {
 

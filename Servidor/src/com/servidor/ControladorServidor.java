@@ -20,15 +20,6 @@ import com.mensajes.Comandos;
 import com.mensajes.Mensaje;
 import com.sala.Sala;
 
-/**
- * Singleton. Controlador general del chat. Desde aca se deberia poder hacer
- * todo lo necesario en el funcionamiento publico del chat, como enviar mensajes
- * o logouts. Sera accedida desde multiples hilos al mismo tiempo.
- * <b>Sincronizar!</b>
- * 
- * @author Maxi
- *
- */
 public class ControladorServidor {
 
 	private static ControladorServidor instance = null;
@@ -57,30 +48,11 @@ public class ControladorServidor {
 	}
 
 	private Chain ensamblarChain() {
-		/*AgregarClienteASala  agregarClienteASala = new AgregarClienteASala(salas,clientesEnLobby);
-		CrearSala crearSala = new CrearSala(salas, clientesEnLobby);
-		DesconectarCliente desconectarCliente = new DesconectarCliente(salas, clientesEnLobby);
-		EnviarMsjASala enviarMensaje = new EnviarMsjASala(salas);
-		InvitarUsuario invitarUsuario = new InvitarUsuario(clientesEnLobby);
-		ClienteDejandoSala clienteDejandoSala = new ClienteDejandoSala(salas,clientesEnLobby);
-		RefrescarListaClientes refrescar = new RefrescarListaClientes(clientesEnLobby);
-		CrearMP conversacionPrivada = new CrearMP(salas,clientesEnLobby);
-		EliminarConversacion eliminarConver = new EliminarConversacion(salas);
-		TestConexion testConexion= new TestConexion(clientesEnLobby);
-	
-		agregarClienteASala.enlazarSiguiente(crearSala);
-		crearSala.enlazarSiguiente(desconectarCliente);
-		desconectarCliente.enlazarSiguiente(clienteDejandoSala);
-		clienteDejandoSala.enlazarSiguiente(refrescar);
-		refrescar.enlazarSiguiente(eliminarConver);
-		eliminarConver.enlazarSiguiente(conversacionPrivada);
-		conversacionPrivada.enlazarSiguiente(enviarMensaje);
-		enviarMensaje.enlazarSiguiente(invitarUsuario);*/
-		
+
 		AgregarClienteASala  agregarClienteASala = new AgregarClienteASala(salas,clientesEnLobby);
 		CrearSala crearSala = new CrearSala(salas, clientesEnLobby);
 		DesconectarCliente desconectarCliente = new DesconectarCliente(salas, clientesEnLobby);
-		EnviarMsjASala enviarMensaje = new EnviarMsjASala(salas);
+		EnviarMsjASala mensajeASala = new EnviarMsjASala(salas);
 		InvitarUsuario invitarUsuario = new InvitarUsuario(clientesEnLobby);
 		ClienteDejandoSala clienteDejandoSala = new ClienteDejandoSala(salas,clientesEnLobby);
 		RefrescarListaClientes refrescar = new RefrescarListaClientes(clientesEnLobby);
@@ -91,8 +63,8 @@ public class ControladorServidor {
 	
 		agregarClienteASala.enlazarSiguiente(crearSala);
 		crearSala.enlazarSiguiente(desconectarCliente);
-		desconectarCliente.enlazarSiguiente(enviarMensaje);
-		enviarMensaje.enlazarSiguiente(invitarUsuario);
+		desconectarCliente.enlazarSiguiente(mensajeASala);
+		mensajeASala.enlazarSiguiente(invitarUsuario);
 		invitarUsuario.enlazarSiguiente(clienteDejandoSala);
 		clienteDejandoSala.enlazarSiguiente(refrescar);
 		refrescar.enlazarSiguiente(conversacionPrivada);

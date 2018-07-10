@@ -1,18 +1,18 @@
-package com.db;
+package com.modelo;
 
 import java.io.Serializable;
 
-public class ChuckNorris implements Serializable {
+public class Robotica implements Serializable {
 
-	private static final long serialVersionUID = -5153794647898719855L;
+	private static final long serialVersionUID = -371128921165058773L;
 	
 	private int ID;
 	
 	private String frase;
 	
-	public ChuckNorris() {}
+	public Robotica() {}
 
-	public ChuckNorris(int iD, String frase) {
+	public Robotica(int iD, String frase) {
 		super();
 		ID = iD;
 		this.frase = frase;

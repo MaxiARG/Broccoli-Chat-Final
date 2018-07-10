@@ -1,5 +1,5 @@
-package com.db;
-//NO SE USA MAS
+package com.modelo;
+//NO SE USA MAS -> PRONTO A SER BORRADO.
 public class DAO_BaseDeDatos {
 		/*private static DAO_BaseDeDatos instance=null;
 		private ArrayList<Usuario> listaUsuarios;
