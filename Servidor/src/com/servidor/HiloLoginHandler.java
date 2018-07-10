@@ -13,6 +13,8 @@ import com.mensajes.Comandos;
 import com.mensajes.Mensaje;
 import com.sala.Sala;
 
+import dataAccess.DAUsuario;
+
 /**
  * Clase para acceder a informacion en la base de datos. DAO = Data Access
  * Object. Se crea Uno por cada cliente que se conecta, se crea, hace lo que
@@ -110,8 +112,9 @@ public class HiloLoginHandler implements Runnable {
 
 	}
 
-	private boolean validarUsuario(String usuario, String password) {
-		return DAO_BaseDeDatos.getInstance().validarUsuario(usuario, password);
+	private boolean validarUsuario(String nombreUsuario, String password) {
+		DAUsuario daoUsuario= new DAUsuario();
+		return daoUsuario.usuarioExistente(nombreUsuario);
 	}
 
 	public void contestarUsuario(boolean usuarioValido) { // REVISAR PARTE

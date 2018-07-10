@@ -1,5 +1,13 @@
 package dataAccess;
 
+import java.util.Iterator;
+import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 
 import com.db.Usuario;
@@ -11,17 +19,21 @@ public class DAUsuario {
 		session = ConectorSingleton.getInstance().getSession();
 	}
 	
-	public Usuario obtenerUsuario(String alias) {
-		return null;
-	}
-	
-	public Usuario obtenerUsuario(int usuarioID) {
-		return null;
-	}
-	
 	public void almacenarUsuarioNuevo(Usuario u) {
+		if(usuarioExistente(u.getNombre())==false) {
 		session.getTransaction().begin();
 		session.saveOrUpdate(u);
 		session.getTransaction().commit();
+		}
+	}
+	
+	public boolean usuarioExistente(String nombre) {
+		Criteria c= session.createCriteria(Usuario.class);
+		List<Usuario> lista= (List<Usuario>) c.list();
+		
+		for(Usuario u: lista) {
+			if(u.getNombre().equals(nombre)) return true;
+		}
+		return false;
 	}
 }
