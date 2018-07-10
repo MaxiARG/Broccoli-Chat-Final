@@ -41,6 +41,7 @@ public class LoginHandler implements Runnable {
 	public  LoginHandler(Socket _socket, GUI_Login _loginGui) {
 		
 			entradaSalida=EntradaSalida.getInstance();
+			entradaSalida.setJframeActual(_loginGui);
 			entradaSalida.setSocket(_socket);
 			loginGui=_loginGui;
 	}

@@ -4,9 +4,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.SocketException;
 
+import javax.swing.JFrame;
 
 import com.mensajes.Mensaje;
+import com.utilitarios.HiloReconexion;
+import com.vista.GUI_Login;
 
 
 public class EntradaSalida {
@@ -14,6 +18,7 @@ public class EntradaSalida {
 	ObjectInputStream objectIn;
 	ObjectOutputStream objectOut;
 	static EntradaSalida entradasalida;
+	private JFrame ventanaActual;
 	
 	private EntradaSalida() {
 		entradasalida=this;
@@ -41,8 +46,13 @@ public class EntradaSalida {
 		try {
 			objectOut.writeObject(mensaje);
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
+	}
+	
+	public void setJframeActual(JFrame jf) {
+		if(jf!=null)
+		ventanaActual=jf;
 	}
 	
 	public Mensaje recibirMensaje() {
@@ -50,7 +60,14 @@ public class EntradaSalida {
 		try {
 			devuelve= (Mensaje) objectIn.readObject();
 		} catch (ClassNotFoundException | IOException e) {
-			e.printStackTrace();
+			//Si se pierde la conexion por Socket Reset, abrir Login.
+			GUI_Login g = new GUI_Login();
+			g.setVisible(true);
+			HiloReconexion hiloReconexion= new HiloReconexion(g);
+			Thread tReconexion= new Thread(hiloReconexion,"Hilo_Reconexion");
+			tReconexion.start();
+			ventanaActual.dispose();
+			//e.printStackTrace();
 		}
 		return devuelve;
 	}

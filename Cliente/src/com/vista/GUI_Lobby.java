@@ -73,6 +73,7 @@ public class GUI_Lobby extends JFrame {
 		configurarJListSalas();
 		
 		entradaSalida=EntradaSalida.getInstance();
+		entradaSalida.setJframeActual(this);
 		
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -82,7 +83,7 @@ public class GUI_Lobby extends JFrame {
 				        "Realmente desea Salir?", "Realmente desea Salir?", JOptionPane.YES_NO_OPTION);
 				if(confirma==0) {
 				entradaSalida.escribirMensaje(new Mensaje(Comandos.LOGOUT, nombreCliente));
-				entradaSalida.cerrarEntradaSalida();
+				entradaSalida.cerrarEntradaSalida(); // Ver si se puede borrar.
 				
 				dispose();
 				} 

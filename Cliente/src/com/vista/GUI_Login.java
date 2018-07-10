@@ -21,9 +21,13 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import com.utilitarios.HiloReconexion;
 import com.utilitarios.LoginHandler;
 
 public class GUI_Login extends JFrame {
+
+
+
 
 	private static final long serialVersionUID = 5818745717722164373L;
 	private JPanel contentPane;
@@ -35,16 +39,15 @@ public class GUI_Login extends JFrame {
 	private String password;
 	private boolean boton=false;
 	
-	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					GUI_Login loginGUI = new GUI_Login();
 					loginGUI.setVisible(true);
-					
-					Socket socket=loginGUI.actualizarLabelEstadoConexion();
-					loginGUI.manejarLogin(socket,loginGUI);
+					crearHiloReconexion(loginGUI);
+				//	Socket socket=loginGUI.actualizarLabelEstadoConexion();
+				//	loginGUI.manejarLogin(socket,loginGUI);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -52,25 +55,26 @@ public class GUI_Login extends JFrame {
 		});
 	}
 
-	
-	public GUI_Login()  {
-
-		crearRecursosGUI();
+	private static void crearHiloReconexion(GUI_Login _gui) {
+		Thread hiloReconexion= new Thread(new HiloReconexion(_gui), "Hilo_Reconexion");
+		hiloReconexion.start();
 		
 	}
+	public GUI_Login()  {
+		crearRecursosGUI();
+	}
 	
-	private void manejarLogin(Socket socket, GUI_Login log) {
+	/*private void manejarLogin(Socket socket, GUI_Login log) {
 		LoginHandler loginHandler= new LoginHandler(socket, this);
 		Thread tLoginHandler= new Thread(loginHandler);
 		tLoginHandler.start();
-	}
+	}*/
 
 	
-	@SuppressWarnings({ "resource", "finally" })
-	protected Socket actualizarLabelEstadoConexion() {
+/*	protected Socket actualizarLabelEstadoConexion() {
 		Socket socket=null;
 		try {
-			socket = new Socket("localhost",1234); //PARAMETRIZAR ESTO			
+			socket = new Socket(IP_SERVIDOR,Integer.parseInt(PUERTO_SERVIDOR)); 	
 			if(socket.isConnected()) {
 				lblEstado.setText("");
 				lblEstado.setText("Estado: Servidor Online");
@@ -84,7 +88,7 @@ public class GUI_Login extends JFrame {
 			return socket;
 		}
 		
-	}
+	}*/
 	
 	private void crearRecursosGUI() {
 
@@ -135,10 +139,12 @@ public class GUI_Login extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//TO-DO VALIDACIONES BASICAS.
-
+				
+				if(usuario_textField.getText()!=null && password_textField.getPassword()!=null) {
 				username=usuario_textField.getText().trim();
 				password=String.valueOf(password_textField.getPassword());
 				boton=true;	
+				}
 			}
 		});
 		contentPane.add(btnNewButton);
@@ -198,4 +204,10 @@ public class GUI_Login extends JFrame {
 	public void setBoton(boolean boton) {
 		this.boton = boton;
 	}
+	
+	public void setEstado(String linea) {
+		 lblEstado.setText(linea); 
+	}
+
+
 }

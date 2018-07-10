@@ -12,5 +12,5 @@ public abstract class Chain {
 		}
 		
 				
-		public abstract void manejarPeticion(Mensaje p);
+		public abstract void manejarPeticion(Mensaje mensaje);
 }

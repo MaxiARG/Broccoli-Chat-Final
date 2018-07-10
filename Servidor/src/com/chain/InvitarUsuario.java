@@ -39,7 +39,7 @@ public class InvitarUsuario extends Chain{
 		}
 		else
 		{	
-			System.out.println("Servidor: Ultimo eslabon. InvitarUSUARIO. El comando era: "+mensaje.getComando());
+			siguiente.manejarPeticion(mensaje);
 		}
 	}
 
