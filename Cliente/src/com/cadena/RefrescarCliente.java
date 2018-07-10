@@ -2,7 +2,6 @@ package com.cadena;
 
 import java.util.ArrayList;
 
-import static com.Cliente.Cliente.nombreCliente;
 import com.mensajes.Comandos;
 import com.mensajes.Mensaje;
 import com.salas.Sala;

@@ -7,7 +7,6 @@ import java.util.List;
 import com.cliente.ClientInputHandler;
 import com.cliente.ClientOutputHandler;
 import com.cliente.Cliente;
-import com.db.DAO_BaseDeDatos;
 import com.logs.LoggerCliente;
 import com.mensajes.Comandos;
 import com.mensajes.Mensaje;

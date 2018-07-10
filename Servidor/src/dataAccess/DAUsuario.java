@@ -1,11 +1,6 @@
 package dataAccess;
 
-import java.util.Iterator;
 import java.util.List;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -29,7 +24,7 @@ public class DAUsuario {
 	
 	public boolean usuarioExistente(String nombre) {
 		Criteria c= session.createCriteria(Usuario.class);
-		List<Usuario> lista= (List<Usuario>) c.list();
+		List<Usuario> lista= (List<Usuario>) c.list(); 
 		
 		for(Usuario u: lista) {
 			if(u.getNombre().equals(nombre)) return true;

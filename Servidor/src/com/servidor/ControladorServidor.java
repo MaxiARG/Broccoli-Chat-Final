@@ -7,6 +7,7 @@ import com.chain.Chain;
 import com.chain.ClienteDejandoSala;
 import com.chain.CrearMP;
 import com.chain.CrearSala;
+import com.chain.Default;
 import com.chain.DesconectarCliente;
 import com.chain.EliminarConversacion;
 import com.chain.EnviarMsjASala;
@@ -85,19 +86,19 @@ public class ControladorServidor {
 		RefrescarListaClientes refrescar = new RefrescarListaClientes(clientesEnLobby);
 		CrearMP conversacionPrivada = new CrearMP(salas,clientesEnLobby);
 		EliminarConversacion eliminarConver = new EliminarConversacion(salas);
-		TestConexion testConexion= new TestConexion(clientesEnLobby);
+		TestConexion testConexion= new TestConexion(clientesEnLobby); //Aun no usado..
+		Default finDeCadena=new Default();// SIEMPRE VA ULTIMO
 	
 		agregarClienteASala.enlazarSiguiente(crearSala);
 		crearSala.enlazarSiguiente(desconectarCliente);
 		desconectarCliente.enlazarSiguiente(enviarMensaje);
 		enviarMensaje.enlazarSiguiente(invitarUsuario);
 		invitarUsuario.enlazarSiguiente(clienteDejandoSala);
-		
 		clienteDejandoSala.enlazarSiguiente(refrescar);
 		refrescar.enlazarSiguiente(conversacionPrivada);
 		conversacionPrivada.enlazarSiguiente(eliminarConver);
-		
 		eliminarConver.enlazarSiguiente(testConexion);
+		testConexion.enlazarSiguiente(finDeCadena);
 		
 		
 		

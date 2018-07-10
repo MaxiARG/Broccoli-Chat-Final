@@ -23,7 +23,7 @@ public class TestConexion extends Chain {
 					}
 				}
 		} else {
-			System.out.println("Servidor: Ultimo eslabon. TestConexion. El comando era: "+mensaje.getComando());
+			siguiente.manejarPeticion(mensaje);
 		}
 	}
 

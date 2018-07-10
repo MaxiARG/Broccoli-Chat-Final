@@ -34,7 +34,6 @@ import javax.swing.JList;
 import javax.swing.JLabel;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Collections;
 
 import static com.Cliente.Cliente.nombreCliente;
 
@@ -49,9 +48,7 @@ public class GUI_Sala extends JFrame {
 	JList<String> list;
 	DefaultListModel<String> modeloClientesEnSala;
 	private DefaultListModel<String> modeloClientesEnLobby;
-	public DefaultListModel<String> getModeloClientesEnLobby() {
-		return modeloClientesEnLobby;
-	}
+
 	private String nombreSala;
 	private Integer salaID;
 	JLabel labelSalaID;
@@ -137,13 +134,11 @@ public class GUI_Sala extends JFrame {
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-				// TODO Auto-generated method stub
 				
 			}
 
 			@Override
 			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
 				
 			}
 
@@ -307,5 +302,9 @@ public class GUI_Sala extends JFrame {
 	}
 	public void limpiarListaClientes(){
 		modeloClientesEnSala.removeAllElements();
+	}
+	
+	public DefaultListModel<String> getModeloClientesEnLobby() {
+		return modeloClientesEnLobby;
 	}
 }

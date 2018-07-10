@@ -1,6 +1,5 @@
 package com.db;
 
-import java.io.Serializable;
 
 /**
  * El Usuario es con lo que cada persona se registra. Nombre y Password. No sabe nada de Sockets. <b>Solo se usa para Login</b>.
