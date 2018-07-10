@@ -108,7 +108,8 @@ public class ControladorCliente implements Runnable {
 			}
 		} catch (Exception s) {
 			s.printStackTrace();
-			corriendo=false;}
+			corriendo=false;
+			}
 
 	}
 

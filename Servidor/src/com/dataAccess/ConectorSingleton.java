@@ -1,4 +1,4 @@
-package dataAccess;
+package com.dataAccess;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

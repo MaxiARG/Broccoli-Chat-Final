@@ -11,7 +11,6 @@ import com.mensajes.Comandos;
 import com.mensajes.Mensaje;
 import com.salas.HiloOutputSala;
 import com.salas.Sala;
-import com.vista.GUI_Invitacion;
 import com.vista.GUI_Lobby;
 import com.vista.GUI_Sala;
 

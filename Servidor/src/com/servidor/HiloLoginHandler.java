@@ -7,7 +7,7 @@ import java.util.List;
 import com.cliente.ClientInputHandler;
 import com.cliente.ClientOutputHandler;
 import com.cliente.Cliente;
-import com.db.DAO_BaseDeDatos;
+import com.dataAccess.DAUsuario;
 import com.logs.LoggerCliente;
 import com.mensajes.Comandos;
 import com.mensajes.Mensaje;
@@ -110,8 +110,9 @@ public class HiloLoginHandler implements Runnable {
 
 	}
 
-	private boolean validarUsuario(String usuario, String password) {
-		return DAO_BaseDeDatos.getInstance().validarUsuario(usuario, password);
+	private boolean validarUsuario(String nombreUsuario, String password) {
+		DAUsuario daoUsuario= new DAUsuario();
+		return daoUsuario.usuarioExistente(nombreUsuario);
 	}
 
 	public void contestarUsuario(boolean usuarioValido) { // REVISAR PARTE

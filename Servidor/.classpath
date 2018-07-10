@@ -20,5 +20,6 @@
 	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/log4j-api-2.11.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/slf4j-api-1.7.21.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/slf4j-simple-1.7.21.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/javax.persistence-api-2.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
