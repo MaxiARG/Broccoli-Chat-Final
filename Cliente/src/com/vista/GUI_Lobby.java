@@ -108,6 +108,17 @@ public class GUI_Lobby extends JFrame {
 		mnMenu.setHorizontalAlignment(SwingConstants.CENTER);
 		menuBar.add(mnMenu);
 		
+		JMenuItem mntmCrearcambiarNombreAsistente = new JMenuItem("Crear/Cambiar nombre Asistente");
+		mntmCrearcambiarNombreAsistente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				GUI_CambiarNombreAsistente g= new GUI_CambiarNombreAsistente();
+				g.setVisible(true);
+				
+			}
+		});
+		mnMenu.add(mntmCrearcambiarNombreAsistente);
+		
 		JMenuItem mntmSalir = new JMenuItem("Salir");
 
 		
