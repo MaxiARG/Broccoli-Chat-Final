@@ -22,26 +22,21 @@ public class HiloOutputSala implements Runnable {
 	@Override
 	public void run() {
 		sigueCorriendo = true;
-		StringBuilder texto;
+		StringBuilder strBuildrTexto;
 		while (sigueCorriendo) {
 
 			synchronized (this) {
 				try {
 					wait();
-
-					 // tengo en cuenta todos los GUI?
-												// o
-												// hago hilos separados?
-					
 						
-						
-						String textoIngresado =salaGUI.getChatTextBoxSala().getText().trim();
+						String textoIngresado =salaGUI.getChatTextBoxSala().getText();
 						if(!textoIngresado.equals("")) {
-						texto = new StringBuilder();
-						texto.append('\n');
-						texto.append(nombreCliente + " : ");
+						strBuildrTexto = new StringBuilder();
+						strBuildrTexto.delete(0, strBuildrTexto.length());
+						//strBuildrTexto.append('\n');
+						strBuildrTexto.append(nombreCliente.toUpperCase() + ":  "+textoIngresado);
 						
-						StringBuilder textoAEnviar = new StringBuilder(textoIngresado);
+					/*	StringBuilder textoAEnviar = new StringBuilder(textoIngresado);
 						
 						   int  i = 30;
 						   if(textoAEnviar.length()>30) {
@@ -50,12 +45,14 @@ public class HiloOutputSala implements Runnable {
 					        	textoAEnviar.insert(i, '\n'); 
 					        	i+=30;
 					        }
-						   }
+						   }*/
 					      
-					     texto.append(textoAEnviar.toString());  
+					     //strBuildrTexto.append(textoAEnviar.toString());  
 						entradaSalida.escribirMensaje(
-								new Mensaje(Comandos.MensajeASala, texto.toString(), sala.getSalaID()));
+								new Mensaje(Comandos.MensajeASala, strBuildrTexto.toString(), sala.getSalaID()));
+						
 						salaGUI.getChatTextBoxSala().setText("");
+						
 						}
 						
 

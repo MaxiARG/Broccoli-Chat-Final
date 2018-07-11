@@ -3,7 +3,7 @@
   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
       "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.db.Usuario" table="Usuario">
+    <class name="com.modelo.Usuario" table="Usuario">
         <id column="Usuario_ID" name="ID" type="int" />
         <property column="Nombre" name="nombre" type="string" />
         <property column="Password" name="password" type="string" />

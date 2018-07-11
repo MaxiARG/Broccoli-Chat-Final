@@ -8,11 +8,11 @@ public class Pedido {
 	private String nameAsistente;
 
 	
-	public Pedido(String mensaje_original, String nameUsuario, String nameAsistente) {
+	public Pedido(String mensaje_original, String nombreUsuario, String nombreAsistente) {
 		super();
 		this.mensaje = normalizado(mensaje_original);
-		this.nameUsuario = nameUsuario;
-		this.nameAsistente = nameAsistente;
+		this.nameUsuario = nombreUsuario;
+		this.nameAsistente = nombreAsistente;
 	}
 
 	public String getMensaje() {

@@ -3,7 +3,7 @@
   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
       "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.db.ChuckNorris" table="CHUCK">
+    <class name="com.modelo.ChuckNorris" table="CHUCK">
         <id column="CHUCK_ID" name="ID" type="int" />
         <property column="Nombre" name="frase" type="string" />
     </class>

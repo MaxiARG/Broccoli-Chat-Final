@@ -62,22 +62,22 @@ public class GUI_Sala extends JFrame {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				sala.getHilo().setSigueCorriendo(false);
-				StringBuilder informacion = new StringBuilder();
-				informacion.append(nombreCliente);
-				informacion.append(';');
-				informacion.append(nombreSala);
-				informacion.append(';');
-				informacion.append(salaID);
-				informacion.append(';');
-				informacion.append(-1);
+				StringBuilder informacionStrBuilder = new StringBuilder();
+				informacionStrBuilder.append(nombreCliente);
+				informacionStrBuilder.append(';');
+				informacionStrBuilder.append(nombreSala);
+				informacionStrBuilder.append(';');
+				informacionStrBuilder.append(salaID);
+				informacionStrBuilder.append(';');
+				informacionStrBuilder.append(-1);
 				if(!sala.isConversacion()){
-				EntradaSalida.getInstance().escribirMensaje(new Mensaje(Comandos.ClienteDejandoSala,informacion.toString()));
+				EntradaSalida.getInstance().escribirMensaje(new Mensaje(Comandos.ClienteDejandoSala,informacionStrBuilder.toString()));
 				
 				sala.sacarCliente(nombreCliente);
 				System.out.println("SE CERROOOOOOOOOOOOOOOOOO");
 				}else{
 					
-					EntradaSalida.getInstance().escribirMensaje(new Mensaje(Comandos.ClienteDejandoConver,informacion.toString()));
+					EntradaSalida.getInstance().escribirMensaje(new Mensaje(Comandos.ClienteDejandoConver,informacionStrBuilder.toString()));
 					
 					sala.setSalaGui(null);
 				}
@@ -86,6 +86,7 @@ public class GUI_Sala extends JFrame {
 		});
 		
 		copiarClientes(modeloListaClientes);
+		
 		setResizable(true);
 		getContentPane().setLayout(null);
 		setBounds(100, 100, 631, 373);
@@ -101,19 +102,22 @@ public class GUI_Sala extends JFrame {
 		chatTextBoxSala = new JTextField();
 		chatTextBoxSala.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			HiloOutputSala outputSala = sala.getHilo();
 			outputSala.mandarMensaje();
+		
+			
 			}
 		});
 		
 		chatTextBoxSala.addKeyListener(new KeyListener() {
-			
 			@Override
 			public void keyTyped(KeyEvent e) {
 			    int max = 500;
-			    if(chatTextBoxSala.getText().length() > max+1) {
+			    if(chatTextBoxSala.getText().length() > max) {
 			        e.consume();
-			        String shortened = chatTextBoxSala.getText().substring(0, max);
+			    }
+			       /* String shortened = chatTextBoxSala.getText().substring(0, max);
 			        chatTextBoxSala.setText(shortened);
 			    }
 			    if(chatTextBoxSala.getText().length() > max) {
@@ -128,7 +132,7 @@ public class GUI_Sala extends JFrame {
 				        	textoIngresado.replace(i, i + 1, "\n");
 				        }
 				        chatTextBoxSala.setText(textoIngresado.toString());
-			    }
+			    }*/
 			    
 			}
 

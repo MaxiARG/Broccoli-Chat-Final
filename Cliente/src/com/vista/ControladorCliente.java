@@ -2,12 +2,16 @@ package com.vista;
 
 import static com.Cliente.Cliente.nombreCliente;
 
+import java.awt.Color;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-
+import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
 import com.Cliente.EntradaSalida;
@@ -113,8 +117,65 @@ public class ControladorCliente implements Runnable {
 
 	}
 
+public synchronized void imprimirEnLobby(Mensaje mensaje) {
+			StyledDocument styledDocument = lobbyGui.getChatLobby().getStyledDocument();
+			StyleContext cont = StyleContext.getDefaultStyleContext();
+	        StringBuilder sb= new StringBuilder();
+	        AttributeSet atributoRojo = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.RED);
+	        AttributeSet atributoAzul = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLUE);
+	        AttributeSet attrBlack = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLACK);
+	        
+			SimpleAttributeSet center = new SimpleAttributeSet();
+			StyleConstants.setAlignment(center, StyleConstants.ALIGN_LEFT);
+			
+			try {
+				String texto= mensaje.getInformacion().trim();
+		        String linea[]=mensaje.getInformacion().split(" ");
+		        if(linea!=null && linea.length>=1) {
+		        styledDocument.insertString(styledDocument.getLength(),linea[0], atributoRojo);
+		        Pattern p = Pattern.compile("@[a-zA-Z0-9_.]+?(?![a-zA-Z0-9_.])");
+		        
+		        Matcher m = p.matcher(texto);
+		        ArrayList<String> matches= new ArrayList<String>();
+		        
+		        while(m.find()) {
+		        	matches.add(m.group());
+		        }
+		        
+		        for(int i=1; i<linea.length;i++) {
+		        	if(linea[i]!=null) {
+		        		
+		        		if(matches.contains(linea[i]) && copiaClientesEnLobby.contains(linea[i].substring(1, linea[i].length()))) {
+		        			styledDocument.insertString(styledDocument.getLength(),linea[i]+" ", atributoAzul);
+		        			
+		        		}else {
+		        			styledDocument.insertString(styledDocument.getLength(), linea[i]+" ", attrBlack);
+		        		}
+		        	}
+		        }
+		        styledDocument.insertString(styledDocument.getLength(), " \n", attrBlack);
+		        
+		        
+				//styledDocument.insertString(styledDocument.getLength(), mensaje.getInformacion(), null);
+				//styledDocument.setParagraphAttributes(styledDocument.getLength() + 1, 1, center, false);
+		        }
+			} catch (BadLocationException e) {
+
+				e.printStackTrace();
+			}
+			
+			/*try {
+				styledDocument.insertString(styledDocument.getLength(), mensaje.getInformacion(), null);
+				styledDocument.setParagraphAttributes(styledDocument.getLength() + 1, 1, center, false);
+			} catch (BadLocationException e) {
+				e.printStackTrace();
+			}*/
+
+	}
+
 	// no borrar
-	public synchronized void imprimirEnLobby(Mensaje mensaje) {
+	@Deprecated
+	public synchronized void imprimirEnLobby2(Mensaje mensaje) {
 		StyledDocument styledDocument;
 
 		if (!esParaEsteCliente(mensaje)) {
@@ -146,15 +207,77 @@ public class ControladorCliente implements Runnable {
 
 	// no borrar
 	public synchronized void imprimirEnSala(Mensaje mensaje, GUI_Sala guiSala) {
-		StyledDocument sd;
+		StyledDocument styledDocument=guiSala.getChatSala().getStyledDocument();
+		StyleContext cont = StyleContext.getDefaultStyleContext();
+        StringBuilder sb= new StringBuilder();
+        AttributeSet atributoRojo = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.RED);
+        AttributeSet atributoAzul = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLUE);
+        AttributeSet attrBlack = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLACK);
+        
+		try {
+			String texto= mensaje.getInformacion().trim();
+	        String linea[]=mensaje.getInformacion().split(" ");
+	        if(linea!=null && linea.length>=1) {
+	        styledDocument.insertString(styledDocument.getLength(),linea[0], atributoRojo);
+	        Pattern p = Pattern.compile("@[a-zA-Z0-9_.]+?(?![a-zA-Z0-9_.])");
+	        
+	        Matcher m = p.matcher(texto);
+	        ArrayList<String> matches= new ArrayList<String>();
+	        
+	        while(m.find()) {
+	        	matches.add(m.group());
+	        }
+	        
+	        for(int i=1; i<linea.length;i++) {
+	        	if(linea[i]!=null) {
+	        		
+	        		if(matches.contains(linea[i]) && copiaClientesEnLobby.contains(linea[i].substring(1, linea[i].length()))) {
+	        			styledDocument.insertString(styledDocument.getLength(),linea[i]+" ", atributoAzul);
+	        			
+	        		}else {
+	        			styledDocument.insertString(styledDocument.getLength(), linea[i]+" ", attrBlack);
+	        		}
+	        	}
+	        }
+	        styledDocument.insertString(styledDocument.getLength(), " \n", attrBlack);
+	        
+	        
+			//styledDocument.insertString(styledDocument.getLength(), mensaje.getInformacion(), null);
+			//styledDocument.setParagraphAttributes(styledDocument.getLength() + 1, 1, center, false);
+	        }
+		} catch (BadLocationException e) {
 
-		if (!esParaEsteCliente(mensaje)) {// Hola Mundo
-			sd = guiSala.getChatSala().getStyledDocument();
+			e.printStackTrace();
+		}
+        
+        
+	}
+	@Deprecated
+	public synchronized void imprimirEnSala2(Mensaje mensaje, GUI_Sala guiSala) {
+		StyledDocument styledDocument;
+		StyleContext cont = StyleContext.getDefaultStyleContext();
+        AttributeSet attr = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.RED);
+        AttributeSet attrBlack = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLACK);
+
+		if (!esParaEsteCliente(mensaje)) {
+			styledDocument = guiSala.getChatSala().getStyledDocument();
 			SimpleAttributeSet center = new SimpleAttributeSet();
 			StyleConstants.setAlignment(center, StyleConstants.ALIGN_LEFT);
 			try {
-				sd.insertString(sd.getLength(), mensaje.getInformacion(), null);
-				sd.setParagraphAttributes(sd.getLength() + 1, 1, center, false);
+
+		        String linea[]=mensaje.getInformacion().split(" ");
+		        if(linea!=null && linea.length>=1) {
+		        styledDocument.insertString(0,linea[0], attr);
+		        StringBuilder sb= new StringBuilder();
+		        for(int i=1; i<linea.length;i++) {
+		        	if(linea[i]!=null)
+		        	sb.append(linea[i]); 
+		        }
+		        
+		        styledDocument.insertString(styledDocument.getLength(), sb.toString(), attrBlack);
+				//styledDocument.insertString(styledDocument.getLength(), mensaje.getInformacion(), null);
+				styledDocument.setParagraphAttributes(styledDocument.getLength() + 1, 1, center, false);
+		        }
 			} catch (BadLocationException e) {
 
 				e.printStackTrace();
@@ -164,10 +287,10 @@ public class ControladorCliente implements Runnable {
 			SimpleAttributeSet attribute = new SimpleAttributeSet();
 			StyleConstants.setAlignment(attribute, StyleConstants.ALIGN_RIGHT);
 
-			sd = guiSala.getChatSala().getStyledDocument();
+			styledDocument = guiSala.getChatSala().getStyledDocument();
 			try {
-				sd.insertString(sd.getLength(), mensaje.getInformacion(), null);
-				sd.setParagraphAttributes(sd.getLength() + 1, 1, attribute, false);
+				styledDocument.insertString(styledDocument.getLength(), mensaje.getInformacion(), null);
+				styledDocument.setParagraphAttributes(styledDocument.getLength() + 1, 1, attribute, false);
 
 			} catch (BadLocationException e) {
 				e.printStackTrace();
