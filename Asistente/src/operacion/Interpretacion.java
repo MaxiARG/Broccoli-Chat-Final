@@ -29,6 +29,7 @@ public class Interpretacion implements Operacion{
 		Operacion LeyesRobotica = new LeyesRobotica();
 		Operacion ChuckNorrisFacts = new ChuckNorrisFacts();
 		Operacion Deuda = new Deuda();
+		Operacion RecordarEventos = new RecordarEventos(); //Punto 16
 		Operacion Default = new Default();
 		
 		this.siguiente(NoDirigidoAsistente);
@@ -42,7 +43,10 @@ public class Interpretacion implements Operacion{
 		Convertir.siguiente(LeyesRobotica);
 		LeyesRobotica.siguiente(ChuckNorrisFacts);
 		ChuckNorrisFacts.siguiente(Deuda);
-		Deuda.siguiente(Default);
+		Deuda.siguiente(RecordarEventos);
+		RecordarEventos.siguiente(Default);
+		
+		
 
 		
 	}
