@@ -9,25 +9,15 @@ package com.modelo;
  */
 public class Usuario {
 	
-	int ID;
-	
 	String nombre;
 	
 	String password;
 	
 	public Usuario() {}
 
-	
-	public Usuario(int _ID, String usuario, String password) {
-		ID=_ID;
-		this.nombre = usuario;
-		this.password = password;
-	}
-
 	public Usuario(String usuario, String password) {
 		this.nombre = usuario;
 		this.password = password;
-		ID=-1;
 	}
 
 	
@@ -62,16 +52,6 @@ public class Usuario {
 		return true;
 	}
 
-	public int getID() {
-		return ID;
-	}
-
-
-	public void setID(int iD) {
-		ID = iD;
-	}
-
-
 	public String getNombre() {
 		return nombre;
 	}
@@ -94,7 +74,7 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [ID=" + ID + ", usuario=" + nombre + ", password=" + password + "]";
+		return "Usuario [usuario=" + nombre + ", password=" + password + "]";
 	}
 
 }

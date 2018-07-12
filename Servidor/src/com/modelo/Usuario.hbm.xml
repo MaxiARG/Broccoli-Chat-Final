@@ -5,9 +5,7 @@
 
 <hibernate-mapping>
 	<class name="com.modelo.Usuario" table="Usuario">
-		<id column="Usuario_ID" name="ID" type="int">
-		</id>
-		<property column="Nombre" name="nombre" type="string" />
+		<id column="Nombre" name="nombre" type="string"></id>
 		<property column="Password" name="password" type="string" />
 	</class>
 </hibernate-mapping>

@@ -85,6 +85,16 @@ public class HSQL {
 			st.executeUpdate("INSERT INTO Usuario (IdUsuario, Contraseña) VALUES ('@delucas', '123456')");
 			st.executeUpdate("INSERT INTO Usuario (IdUsuario, Contraseña) VALUES ('@juan', '123456')");
 			st.executeUpdate("INSERT INTO Usuario (IdUsuario, Contraseña) VALUES ('@maria', '123456')");
+			st.executeUpdate("INSERT INTO Usuario (IdUsuario, Contraseña) VALUES ('aa', 'aa')");
+			st.executeUpdate("INSERT INTO Usuario (IdUsuario, Contraseña) VALUES ('bb', 'bb')");
+			st.executeUpdate("INSERT INTO Usuario (IdUsuario, Contraseña) VALUES ('maxi', '1234')");
+			st.executeUpdate("INSERT INTO Usuario (IdUsuario, Contraseña) VALUES ('gaby', '1234')");
+			st.executeUpdate("INSERT INTO Usuario (IdUsuario, Contraseña) VALUES ('hector', '1234')");
+			st.executeUpdate("INSERT INTO Usuario (IdUsuario, Contraseña) VALUES ('luciano', '1234')");
+			st.executeUpdate("INSERT INTO Usuario (IdUsuario, Contraseña) VALUES ('lucas', '1234')");
+			st.executeUpdate("INSERT INTO Usuario (IdUsuario, Contraseña) VALUES ('nicolas', '1234')");
+			st.executeUpdate("INSERT INTO Usuario (IdUsuario, Contraseña) VALUES ('cristian', '1234')");
+			st.executeUpdate("INSERT INTO Usuario (IdUsuario, Contraseña) VALUES ('omar', '1234')");
 			
 		} catch (Exception ex){ }
 		finally {

@@ -10,7 +10,6 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 
 import com.modelo.ChuckNorris;
-import com.modelo.Robotica;
 
 public class DAChuck {
 	Session session;

@@ -28,7 +28,7 @@ public class Fecha {
 //	Para que funcione con la fecha del sistema, comentar la linea "ahora.set(2018, 3, 1, 15, 15, 0);"
 	public Fecha () {
 		this.ahora = Calendar.getInstance();
-		ahora.set(2018, 3, 1, 15, 15, 0);	 
+		//ahora.set(2018, 3, 1, 15, 15, 0);	 
 		año = ahora.get(Calendar.YEAR);
 		mes = ahora.get(Calendar.MONTH) + 1; // 1 (ENERO) y 12 (DICIEMBRE)
 		dia = ahora.get(Calendar.DAY_OF_MONTH);

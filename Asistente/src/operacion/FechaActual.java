@@ -18,6 +18,7 @@ public class FechaActual implements Operacion{
 	public String calcular(Pedido pedido) {
 		
 		Fecha diaActual = new Fecha();
+		System.out.println(diaActual);
 		
 		String regex_DiaActual_Hora = ".*(?:que hora es|la hora).*";
 		Pattern pattern_DiaActual_Hora = Pattern.compile(regex_DiaActual_Hora, Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
