@@ -9,7 +9,10 @@ public class Saludar implements Operacion{
 	
 	@Override
 	public String calcular(Pedido pedido) {
-		String regex = ".*(?:hola|buen dia|buenos dias|buenas|que tal|tardes|noches|hey).*";
+		String asist  = pedido.getNameAsistente(); 
+		String asistCap = asist.substring(0,1).toUpperCase() + asist.substring(1).toLowerCase();
+		//String regex = ".*(?:hola|buen dia|buenos dias|buenas|que tal|tardes|noches|hey).*";
+		String regex = "@("+asist+"|"+asistCap+").*(?:hola|buen dia|buenos dias|buenas|buenas tardes|que tal|tardes|noches|buenas noches|hey).*";
 		Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
 		Matcher matcher = pattern.matcher(pedido.getMensaje());
 		while(matcher.find()) {

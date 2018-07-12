@@ -13,14 +13,6 @@ import com.mensajes.Comandos;
 import com.mensajes.Mensaje;
 import com.sala.Sala;
 
-/**
- * Clase para acceder a informacion en la base de datos. DAO = Data Access
- * Object. Se crea Uno por cada cliente que se conecta, se crea, hace lo que
- * hace y se destruye.
- * 
- * @author Maxi
- *
- */
 public class HiloLoginHandler implements Runnable {
 	boolean running;
 	ClientOutputHandler salida;

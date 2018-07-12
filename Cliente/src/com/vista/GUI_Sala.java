@@ -74,11 +74,11 @@ public class GUI_Sala extends JFrame {
 				EntradaSalida.getInstance().escribirMensaje(new Mensaje(Comandos.ClienteDejandoSala,informacionStrBuilder.toString()));
 				
 				sala.sacarCliente(nombreCliente);
-				System.out.println("SE CERROOOOOOOOOOOOOOOOOO");
 				}else{
 					
 					EntradaSalida.getInstance().escribirMensaje(new Mensaje(Comandos.ClienteDejandoConver,informacionStrBuilder.toString()));
 					
+					//dispose();
 					sala.setSalaGui(null);
 				}
 				
@@ -87,7 +87,7 @@ public class GUI_Sala extends JFrame {
 		
 		copiarClientes(modeloListaClientes);
 		
-		setResizable(true);
+		setResizable(false);
 		getContentPane().setLayout(null);
 		setBounds(100, 100, 631, 373);
 	
@@ -96,6 +96,8 @@ public class GUI_Sala extends JFrame {
 		getContentPane().add(scrollPane);
 		
 		chatSala = new JTextPane();
+		chatSala.setEditable(false);
+		chatSala.setFont(new Font("Tahoma", Font.BOLD, 12));
 		desactivarEdicionChatSala();
 		scrollPane.setViewportView(chatSala);
 		
@@ -113,27 +115,10 @@ public class GUI_Sala extends JFrame {
 		chatTextBoxSala.addKeyListener(new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
-			    int max = 500;
+			    int max = 150;
 			    if(chatTextBoxSala.getText().length() > max) {
 			        e.consume();
 			    }
-			       /* String shortened = chatTextBoxSala.getText().substring(0, max);
-			        chatTextBoxSala.setText(shortened);
-			    }
-			    if(chatTextBoxSala.getText().length() > max) {
-			        e.consume();
-			    }else {
-			        
-			        StringBuilder textoIngresado = new StringBuilder(chatTextBoxSala.getText());
-			        
-			 
-			    	   int  i = 0;
-				        while ((i = textoIngresado.indexOf(" ", i + 30)) != -1) {
-				        	textoIngresado.replace(i, i + 1, "\n");
-				        }
-				        chatTextBoxSala.setText(textoIngresado.toString());
-			    }*/
-			    
 			}
 
 			@Override
@@ -232,7 +217,7 @@ public class GUI_Sala extends JFrame {
 	private void crearRecursosGUI() {
 
 		setResizable(false);
-		setTitle("Sala @nombre");
+		setTitle("Sala @nombre "+nombreSala);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 315, 598);
 		
@@ -293,6 +278,7 @@ public class GUI_Sala extends JFrame {
 	public void quitarCliente(String nombre) {
 		modeloClientesEnSala.removeElement(nombre);
 	}
+	
 	public void setTitleSala(String nombre) {
 		this.nombreSala=nombre;
 		this.setTitle(nombre);

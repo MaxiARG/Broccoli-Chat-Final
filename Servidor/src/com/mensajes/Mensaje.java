@@ -2,17 +2,15 @@ package com.mensajes;
 
 import java.io.Serializable;
 
-
-
 public class Mensaje implements Serializable {
 	
 	private static final long serialVersionUID = 2928832563874494113L;
 	private String comando;
-	private String informacion; // es el dato siendo enviado. En principio, solo texto.
+	private String informacion;
 	private Integer salaID;
 	private String emisor;
-	/**Usado para: Enviar chat a sala  El cliente no deberia generar ID SALA !*/
 	
+	//#1
 	public Mensaje(String _comando,String _informacion,Integer salaID, String emisor) {
 		comando = _comando;
 		informacion = _informacion;
@@ -20,15 +18,25 @@ public class Mensaje implements Serializable {
 		this.emisor=emisor;
 	}
 	
-	/**Usado para:  */
+	//#2
 	public Mensaje(String comando, String informacion) {
 		this.comando = comando;
 		this.informacion = informacion;
 		
 	}
+	
+	//#3
 	public Mensaje(String comando, Integer salaID) {
 		this.comando=comando;
 		this.salaID=salaID;
+	}
+	
+	//#4
+	public Mensaje(String _comando,String _informacion,String emisor) {
+		comando = _comando;
+		informacion = _informacion;
+		this.salaID=-1;
+		this.emisor=emisor;
 	}
 	
 	public String getComando() {
@@ -40,13 +48,16 @@ public class Mensaje implements Serializable {
 		return informacion;
 	}
 	
+	public void imprimirAConsola() {
+		
+		System.out.println("Comando:"+comando+"|inform:"+informacion+"|SalaID:"+salaID+"|Emisor:"+emisor);
+	}
+	
 	
 	
 	@Override
 	public String toString() {
-		
 			return this.informacion;
-		
 	}
 
 	public Integer getSalaID() {

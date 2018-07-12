@@ -29,34 +29,19 @@ public class HiloOutputSala implements Runnable {
 				try {
 					wait();
 						
-						String textoIngresado =salaGUI.getChatTextBoxSala().getText();
-						if(!textoIngresado.equals("")) {
+						String textoAEnviar =salaGUI.getChatTextBoxSala().getText();
+						if(!textoAEnviar.trim().equals("")) {
 						strBuildrTexto = new StringBuilder();
-						strBuildrTexto.delete(0, strBuildrTexto.length());
-						//strBuildrTexto.append('\n');
-						strBuildrTexto.append(nombreCliente.toUpperCase() + ":  "+textoIngresado);
+						strBuildrTexto.append(textoAEnviar.trim());
 						
-					/*	StringBuilder textoAEnviar = new StringBuilder(textoIngresado);
+						Mensaje msjAEnviar=new Mensaje(Comandos.MensajeASala,
+													   strBuildrTexto.toString(),
+													   sala.getSalaID(),
+													   nombreCliente);
 						
-						   int  i = 30;
-						   if(textoAEnviar.length()>30) {
-							   while (i<textoAEnviar.length()) {
-								  
-					        	textoAEnviar.insert(i, '\n'); 
-					        	i+=30;
-					        }
-						   }*/
-					      
-					     //strBuildrTexto.append(textoAEnviar.toString());  
-						entradaSalida.escribirMensaje(
-								new Mensaje(Comandos.MensajeASala, strBuildrTexto.toString(), sala.getSalaID()));
-						
+						entradaSalida.escribirMensaje(msjAEnviar);
 						salaGUI.getChatTextBoxSala().setText("");
-						
 						}
-						
-
-					
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
