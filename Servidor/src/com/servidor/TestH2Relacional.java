@@ -11,7 +11,7 @@ import org.hibernate.Session;
 import com.dataAccess.ConectorSingleton;
 import com.modelo.Usuario;
 
-import clase.Asistente;
+import asistente.clase.Asistente;
 
 public class TestH2Relacional {
 
