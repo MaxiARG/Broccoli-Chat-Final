@@ -7,7 +7,7 @@ import com.mensajes.Comandos;
 import com.mensajes.Mensaje;
 import com.sala.Sala;
 
-import clase.Asistente;
+import asistente.clase.Asistente;
 
 public class EnviarMsjASala extends Chain {
 
