@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class Fecha {
+public class Fecha implements Comparable<Fecha>{
 	
 	private Calendar ahora;
 	private int año;
@@ -23,12 +23,20 @@ public class Fecha {
 	private String[] v_mes_nombre = {"ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"};
 	private String[] v_dia_nombre = {"DOMINGO", "LUNES", "MARTES", "MIÉRCOLES", "JUEVES", "VIERNES", "SÁBADO"};
 
-
+	public Fecha (int año_p, int mes_p, int dia_p, int hr_p, int min_p, int seg_p, char est) {
+		this.año = año_p;
+		this.mes = mes_p;
+		this.dia = dia_p;
+		this.hr_24 = hr_p;
+		this.min = min_p;
+		this.seg = seg_p;
+	}
+	
 //	 Constructor por defecto seteado al 01/04/2018 15:15:00, para probar con los tests
 //	Para que funcione con la fecha del sistema, comentar la linea "ahora.set(2018, 3, 1, 15, 15, 0);"
 	public Fecha () {
 		this.ahora = Calendar.getInstance();
-		ahora.set(2018, 3, 1, 15, 15, 0);	 
+		//ahora.set(2018, 3, 1, 15, 15, 0);	 
 		año = ahora.get(Calendar.YEAR);
 		mes = ahora.get(Calendar.MONTH) + 1; // 1 (ENERO) y 12 (DICIEMBRE)
 		dia = ahora.get(Calendar.DAY_OF_MONTH);
@@ -165,6 +173,22 @@ public class Fecha {
 		
 		return "" + ahora.getTime();
 	}
+	
+	@Override
+	public int compareTo(Fecha otra) {
+		
+		if(this.año == otra.año)
+			if(this.mes == otra.mes)
+				if(this.dia == otra.dia)
+					if(this.hr_24 == otra.hr_24)
+						if(this.min == otra.min)
+							return this.seg - otra.seg;
+						else return this.min - otra.min;
+					else return this.hr_24 - otra.hr_24;
+				else return this.dia - otra.dia;
+			else return this.mes - otra.mes;
+		else return this.año - otra.año;
+	}
 
 		
 	public String fechaToString(String format_date) {
@@ -182,8 +206,6 @@ public class Fecha {
 
 		if(format_date.equals(formato_fecha[4]))	// lunes 2 de abril de 2018"
 			return dia_nombre.toLowerCase() + " " + dia + " de " + mes_nombre.toLowerCase() + " de " + año;
-		
-		
 		return "" + ahora.get(Calendar.DATE);
 	}
 	
@@ -232,6 +254,19 @@ public class Fecha {
 			}
 		}
 		return (dias - 1) * ((long)fec1.getTime() < (long)fec2.getTime() ? 1 : -1);
+	}
+	
+	public int diferenciaDeDias() {
+		final long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000; // Milisegundos al día 
+		//Date hoy = new Date();
+		
+		Calendar hCal = new GregorianCalendar(2018, 5, 23);
+		Date hoy = new Date(hCal.getTimeInMillis());
+		
+		Calendar calendar = new GregorianCalendar(this.año, this.mes-1, this.dia);
+		Date fecha = new Date(calendar.getTimeInMillis());
+		
+		return Math.round((fecha.getTime() - hoy.getTime())/MILLSECS_PER_DAY);
 	}
 	
 	
@@ -306,6 +341,7 @@ public class Fecha {
 		años += (fechaFinal.get(Calendar.DAY_OF_YEAR) < fechaInicio.get(Calendar.DAY_OF_YEAR) ? -1 : 0);
 		return años * ((long)fec1.getTime() < (long)fec2.getTime() ? 1 : -1);
 	}
+	
 	
 }
 

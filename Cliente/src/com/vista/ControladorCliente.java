@@ -29,25 +29,13 @@ import com.cadena.RefrescarCliente;
 import com.mensajes.Mensaje;
 import com.salas.Sala;
 
-/**
- * PORqué tengo que meter esta clase en com.vista si es un controlador? solo
- * para tener acceso directo a los componentes GUI ??? otra forma ?
- * 
- * @author Maxi
- *
- */
 public class ControladorCliente implements Runnable {
 	
 	private boolean corriendo=true;
 	
-	// Solo se usa para mostrar clientes en el lobby o cuando quiero agregar gente a
-	// una conversacion.
 	ArrayList<String> copiaClientesEnLobby;
-
-
+	
 	ArrayList<Sala> copiaSalasDisponibles;
-
-
 
 	EntradaSalida entradaSalida;
 
@@ -165,9 +153,6 @@ public synchronized void imprimirEnLobby(Mensaje mensaje) {
 	}
 
 	// no borrar
-
-
-	// no borrar
 	public synchronized void imprimirEnSala(Mensaje mensaje, GUI_Sala guiSala) {
 		StyledDocument styledDocument=guiSala.getChatSala().getStyledDocument();
 		StyleContext cont = StyleContext.getDefaultStyleContext();
@@ -236,84 +221,6 @@ public synchronized void imprimirEnLobby(Mensaje mensaje) {
 	
 	public void setCorriendo(boolean valor){
 		this.corriendo = valor;
-	}
-	
-	@Deprecated
-	public synchronized void imprimirEnLobby2(Mensaje mensaje) {
-		StyledDocument styledDocument;
-
-		if (!esParaEsteCliente(mensaje)) {
-			styledDocument = lobbyGui.getChatLobby().getStyledDocument();
-			SimpleAttributeSet center = new SimpleAttributeSet();
-			StyleConstants.setAlignment(center, StyleConstants.ALIGN_LEFT);
-			try {
-				styledDocument.insertString(styledDocument.getLength(), mensaje.getInformacion(), null);
-				styledDocument.setParagraphAttributes(styledDocument.getLength() + 1, 1, center, false);
-			} catch (BadLocationException e) {
-				e.printStackTrace();
-			}
-
-		} else {
-			SimpleAttributeSet attribute = new SimpleAttributeSet();
-			StyleConstants.setAlignment(attribute, StyleConstants.ALIGN_RIGHT);
-
-			styledDocument = lobbyGui.getChatLobby().getStyledDocument();
-			try {
-				styledDocument.insertString(styledDocument.getLength(), mensaje.getInformacion(), null);
-				styledDocument.setParagraphAttributes(styledDocument.getLength() + 1, 1, attribute, false);
-
-			} catch (BadLocationException e) {
-				e.printStackTrace();
-			}
-		}
-
-	}
-	
-	@Deprecated
-	public synchronized void imprimirEnSala2(Mensaje mensaje, GUI_Sala guiSala) {
-		StyledDocument styledDocument;
-		StyleContext cont = StyleContext.getDefaultStyleContext();
-        AttributeSet attr = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.RED);
-        AttributeSet attrBlack = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLACK);
-
-		if (!esParaEsteCliente(mensaje)) {
-			styledDocument = guiSala.getChatSala().getStyledDocument();
-			SimpleAttributeSet center = new SimpleAttributeSet();
-			StyleConstants.setAlignment(center, StyleConstants.ALIGN_LEFT);
-			try {
-
-		        String linea[]=mensaje.getInformacion().split(" ");
-		        if(linea!=null && linea.length>=1) {
-		        styledDocument.insertString(0,linea[0], attr);
-		        StringBuilder sb= new StringBuilder();
-		        for(int i=1; i<linea.length;i++) {
-		        	if(linea[i]!=null)
-		        	sb.append(linea[i]); 
-		        }
-		        
-		        styledDocument.insertString(styledDocument.getLength(), sb.toString(), attrBlack);
-				//styledDocument.insertString(styledDocument.getLength(), mensaje.getInformacion(), null);
-				styledDocument.setParagraphAttributes(styledDocument.getLength() + 1, 1, center, false);
-		        }
-			} catch (BadLocationException e) {
-
-				e.printStackTrace();
-			}
-
-		} else {
-			SimpleAttributeSet attribute = new SimpleAttributeSet();
-			StyleConstants.setAlignment(attribute, StyleConstants.ALIGN_RIGHT);
-
-			styledDocument = guiSala.getChatSala().getStyledDocument();
-			try {
-				styledDocument.insertString(styledDocument.getLength(), mensaje.getInformacion(), null);
-				styledDocument.setParagraphAttributes(styledDocument.getLength() + 1, 1, attribute, false);
-
-			} catch (BadLocationException e) {
-				e.printStackTrace();
-			}
-		}
-
 	}
 	
 }

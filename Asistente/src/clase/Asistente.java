@@ -5,7 +5,7 @@ import operacion.Interpretacion;
 
 public class Asistente{
 	
-	private static  String USUARIO = "Hector";
+	private static  String USUARIO = "MiSeñor";
 	
 	private String nameAsistente;
 	private String nameUsuario = "@"+USUARIO;

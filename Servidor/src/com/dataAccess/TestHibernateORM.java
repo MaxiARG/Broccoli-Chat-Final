@@ -4,9 +4,9 @@ public class TestHibernateORM {
 
 	public static void main(String[] args) throws ClassNotFoundException {
 			
-		DAUsuario s= new DAUsuario();
+	//	DAUsuario s= new DAUsuario();
 		//s.almacenarUsuarioNuevo(new Usuario(88,"Gato", "Gato"));
-		s.usuarioExistente("a");
+		//s.usuarioExistente("aa","aa");
 	}
 
 }

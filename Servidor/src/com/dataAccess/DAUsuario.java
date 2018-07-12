@@ -2,7 +2,10 @@ package com.dataAccess;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.hibernate.Session;
 
 import com.modelo.Usuario;
@@ -14,21 +17,32 @@ public class DAUsuario {
 		session = ConectorSingleton.getInstance().getSession();
 	}
 	
-	public void almacenarUsuarioNuevo(Usuario u) {
-		if(usuarioExistente(u.getNombre())==false) {
+	//NO USAR JAMAS
+	@Deprecated
+	public void almacenarUsuarioNuevo(String nombre, String pass) {
+		if(usuarioExistente(nombre,pass)==false) {
 		session.getTransaction().begin();
-		session.saveOrUpdate(u);
+		session.saveOrUpdate(new Usuario(nombre,pass));
 		session.getTransaction().commit();
 		}
 	}
 	
-	public boolean usuarioExistente(String nombre) {
-		Criteria c= session.createCriteria(Usuario.class);
-		List<Usuario> lista= (List<Usuario>) c.list(); 
+	public boolean usuarioExistente(String nombre, String pass) {
+							
+		CriteriaBuilder cb1 = session.getCriteriaBuilder();
+		CriteriaQuery<Usuario> criteriaQuery = cb1.createQuery(Usuario.class);
+		Root<Usuario> tabla = criteriaQuery.from(Usuario.class);
+		//criteriaQuery.select(tabla).where(cb1.equal(tabla.get("alias"), alias));
+			
+		List<Usuario> lista = session.createQuery(criteriaQuery).getResultList();
+
+		//Criteria c= session.createCriteria(Usuario.class);
+		//List<Usuario> lista= (List<Usuario>) c.list(); 
 		
 		for(Usuario u: lista) {
-			if(u.getNombre().equals(nombre)) return true;
+			if(u.getNombre().equals(nombre) && u.getPassword().equals(pass)) return true;
 		}
 		return false;
+		
 	}
 }

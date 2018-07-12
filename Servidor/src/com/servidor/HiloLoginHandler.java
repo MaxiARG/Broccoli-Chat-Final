@@ -104,7 +104,7 @@ public class HiloLoginHandler implements Runnable {
 
 	private boolean validarUsuario(String nombreUsuario, String password) {
 		DAUsuario daoUsuario= new DAUsuario();
-		return daoUsuario.usuarioExistente(nombreUsuario);
+		return daoUsuario.usuarioExistente(nombreUsuario, password);
 	}
 
 	public void contestarUsuario(boolean usuarioValido) { // REVISAR PARTE
