@@ -21,5 +21,6 @@
 	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/slf4j-api-1.7.21.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/slf4j-simple-1.7.21.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Maxi/Desktop/Dependencias/javax.persistence-api-2.2.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/TP_AsistenteVirtual-master"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -50,16 +50,16 @@ public class ControladorServidor {
 	private Chain ensamblarChain() {
 
 		AgregarClienteASala  agregarClienteASala = new AgregarClienteASala(salas,clientesEnLobby);
-		CrearSala crearSala = new CrearSala(salas, clientesEnLobby);
-		DesconectarCliente desconectarCliente = new DesconectarCliente(salas, clientesEnLobby);
-		EnviarMsjASala mensajeASala = new EnviarMsjASala(salas);
-		InvitarUsuario invitarUsuario = new InvitarUsuario(clientesEnLobby);
-		ClienteDejandoSala clienteDejandoSala = new ClienteDejandoSala(salas,clientesEnLobby);
+		CrearSala 			 crearSala = new CrearSala(salas, clientesEnLobby);
+		DesconectarCliente 	 desconectarCliente = new DesconectarCliente(salas, clientesEnLobby);
+		EnviarMsjASala 		 mensajeASala = new EnviarMsjASala(salas);
+		InvitarUsuario 		 invitarUsuario = new InvitarUsuario(clientesEnLobby);
+		ClienteDejandoSala 	 clienteDejandoSala = new ClienteDejandoSala(salas,clientesEnLobby);
 		RefrescarListaClientes refrescar = new RefrescarListaClientes(clientesEnLobby);
-		CrearMP conversacionPrivada = new CrearMP(salas,clientesEnLobby);
+		CrearMP 			 conversacionPrivada = new CrearMP(salas,clientesEnLobby);
 		EliminarConversacion eliminarConver = new EliminarConversacion(salas);
-		TestConexion testConexion= new TestConexion(clientesEnLobby); //Aun no usado..
-		Default finDeCadena=new Default();// SIEMPRE VA ULTIMO
+		TestConexion 		 testConexion= new TestConexion(clientesEnLobby); //Aun no usado..
+		Default   			 finDeCadena=new Default();// SIEMPRE VA ULTIMO
 	
 		agregarClienteASala.enlazarSiguiente(crearSala);
 		crearSala.enlazarSiguiente(desconectarCliente);

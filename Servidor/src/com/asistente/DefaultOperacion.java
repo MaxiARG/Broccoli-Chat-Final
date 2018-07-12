@@ -9,8 +9,8 @@ public class DefaultOperacion implements Operacion{
 
 	@Override
 	public String calcular(Pedido pedido) {
-		System.out.println("Servidor: Ultimo eslabon. Operacion no soportada");
-		return null;
+		
+		return pedido.getMensaje();
 	}
 
 }

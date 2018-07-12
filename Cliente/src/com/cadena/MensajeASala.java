@@ -31,8 +31,7 @@ public class MensajeASala extends ChainCliente{
 	public void manejarPeticion(Mensaje msj) {
 		
 		if(msj.getComando().equals(Comandos.MensajeASala)) {
-			System.out.println("MensajeASala Recibio: " + msj.getComando());
-
+			msj.imprimirAConsola();
 			imprimirMsj(msj);
 		}
 		else {siguiente.manejarPeticion(msj);}
@@ -40,12 +39,12 @@ public class MensajeASala extends ChainCliente{
 
 	private void imprimirMsj(Mensaje mensaje) {
 		for(Sala s: copiaSalasDisponibles) {
-			if(mensaje.getIDSala().equals(-1)&&s.getSalaID().equals(mensaje.getIDSala())) {
+			if(mensaje.getSalaID().equals(-1) &&  s.getSalaID().equals(mensaje.getSalaID())) {
 				
 				controladorCliente.imprimirEnLobby(mensaje);
 			}else {
-				if(s.getSalaID().equals(mensaje.getIDSala())){
-					if(s.getSalaGui()==null&&s.isConversacion()){
+				if(s.getSalaID().equals(mensaje.getSalaID())){
+					if(s.getSalaGui()==null && s.isConversacion()){
 						crearGUISala(s);
 						StringBuilder informacion = new StringBuilder();
 						informacion.append(nombreCliente);
@@ -65,7 +64,6 @@ public class MensajeASala extends ChainCliente{
 		}
 	}
 	private void crearGUISala(Sala salaAModificar){
-		System.out.println("se creo el gui");
 		DefaultListModel<String> clientesConectados = (DefaultListModel<String>) lobbyGui.getListaClientesConectados().getModel();
 		GUI_Sala guiSala = new GUI_Sala(clientesConectados);
 		guiSala.setTitleSala(salaAModificar.getNombreSala());

@@ -1,29 +1,27 @@
 package com.servidor;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import clase.Asistente;
 
 public class TestH2Relacional {
 
 	public static void main(String[] args) throws ClassNotFoundException {
-		/*Class.forName("org.h2.Driver");
-	    try (Connection conn = DriverManager.getConnection("jdbc:h2:~/ChatDB", "sa", ""); 
-	            Statement stat = conn.createStatement()) {
-	        try (ResultSet rs = stat.executeQuery("select * from Usuario")) {
-	            while (rs.next()) {
-	                System.out.println(rs.getString("nombre"));
-	            }
-	        }
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }*/
-		  Pattern p = Pattern.compile("(?<=^|(?<=[^a-zA-Z0-9-\\.]))@[A-Za-z0-9-]+(?=[^a-zA-Z0-9-_\\.])");
-	        Matcher m = p.matcher("Hola que @hace  @haceee ");
-	        boolean b= m.find();
-	       // while(m.find()) {
-	            //System.out.println(m.group());
-	        //}
-
+			Asistente asistente= new Asistente("jenkins");
+			String devuelve= asistente.escuchar("buen día @jenkins");
+			//String devuelve= asistente.escuchar("gracias @jenkins");.
+			//String devuelve= asistente.escuchar("me decís la hora @jenkins?");
+			
+			//String devuelve= asistente.escuchar("@jenkins qué día será dentro de 22 días?");
+			//String devuelve= asistente.escuchar("@jenkins cuánto es 1 + 2");
+			//String devuelve= asistente.escuchar("@jenkins jugamos?");
+			//String devuelve= asistente.escuchar("@jenkins cuántos kilos son 9000 gramos");
+			//String devuelve= asistente.escuchar("@jenkins dime las 3 leyes de la robótica");
+			//String devuelve= asistente.escuchar("@jenkins dime la 1ra ley de la robótica.");
+			//String devuelve= asistente.escuchar("@jenkins puedes decir una Chuck Norris Facts?");
+			//String devuelve= asistente.escuchar("@jenkins cual es mi estado de deudas?");
+			//String devuelve= asistente.escuchar("@jenkins dime las 3 leyes de la robótica");
+			System.out.println(devuelve);
+			//devuelve="Disculpa... no entiendo el pedido "+"asdasdasda";
+			//System.out.println(devuelve.contains("Disculpa... no entiendo el pedido"));
 	}
 
 }

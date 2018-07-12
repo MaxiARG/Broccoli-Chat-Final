@@ -8,9 +8,9 @@ import com.vista.GUI_Sala;
 public class Sala {
 	
 	ArrayList<String> clientesEnSala;
-	String nombreSala; //se lo puede usar como hashTag.
+	String nombreSala; 
 	boolean esPrivada=false; //Todas las salas son publicas por defecto
-	GUI_Sala salaGUI; //¿?
+	GUI_Sala salaGUI; 
 	GUI_Lobby lobby;
 	Integer salaID;
 	HiloOutputSala outputSala;
@@ -59,7 +59,6 @@ public class Sala {
 	
 	public void sacarCliente(String cliente) {
 		if(clientesEnSala.contains(cliente)) {
-			System.out.println("SE REMOVIO " + cliente);
 			clientesEnSala.remove(cliente);
 			if(salaGUI!=null)
 			salaGUI.quitarCliente(cliente);

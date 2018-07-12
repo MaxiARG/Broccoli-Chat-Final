@@ -43,8 +43,6 @@ public class GUI_Login extends JFrame {
 					GUI_Login loginGUI = new GUI_Login();
 					loginGUI.setVisible(true);
 					crearHiloReconexion(loginGUI);
-				//	Socket socket=loginGUI.actualizarLabelEstadoConexion();
-				//	loginGUI.manejarLogin(socket,loginGUI);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -60,32 +58,6 @@ public class GUI_Login extends JFrame {
 	public GUI_Login()  {
 		crearRecursosGUI();
 	}
-	
-	/*private void manejarLogin(Socket socket, GUI_Login log) {
-		LoginHandler loginHandler= new LoginHandler(socket, this);
-		Thread tLoginHandler= new Thread(loginHandler);
-		tLoginHandler.start();
-	}*/
-
-	
-/*	protected Socket actualizarLabelEstadoConexion() {
-		Socket socket=null;
-		try {
-			socket = new Socket(IP_SERVIDOR,Integer.parseInt(PUERTO_SERVIDOR)); 	
-			if(socket.isConnected()) {
-				lblEstado.setText("");
-				lblEstado.setText("Estado: Servidor Online");
-			}
-		} catch (IOException e) {
-			lblEstado.setText("");
-			lblEstado.setText("Estado: Servidor Offline");
-
-		}
-		finally {
-			return socket;
-		}
-		
-	}*/
 	
 	private void crearRecursosGUI() {
 
