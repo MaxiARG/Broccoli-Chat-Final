@@ -4,11 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 
 import com.modelo.ChuckNorris;
 import com.modelo.Robotica;
+import com.modelo.Usuario;
 
 public class DARobotica {
 	Session session;
@@ -18,8 +23,16 @@ public class DARobotica {
 	}
 	
 	public ArrayList<String> obtenerTodasLasFrase() {
-		Criteria c= session.createCriteria(Robotica.class);
-		List<Robotica> lista= (List<Robotica>) c.list(); 
+		CriteriaBuilder cb1 = session.getCriteriaBuilder();
+		CriteriaQuery<Robotica> criteriaQuery = cb1.createQuery(Robotica.class);
+		Root<Robotica> tabla = criteriaQuery.from(Robotica.class);
+		//criteriaQuery.select(tabla).where(cb1.equal(tabla.get("alias"), alias));
+			
+		List<Robotica> lista = session.createQuery(criteriaQuery).getResultList();
+
+		//Criteria c= session.createCriteria(Usuario.class);
+		//List<Usuario> lista= (List<Usuario>) c.list(); 
+		
 		ArrayList<String> frases= new ArrayList<String>();
 		
 		for(Robotica r: lista) {
@@ -29,17 +42,33 @@ public class DARobotica {
 		
 	}
 	public String obtenerFraseNumero(int numeroDeFrase) {
-		Criteria c= session.createCriteria(Robotica.class);
-		List<Robotica> lista= (List<Robotica>) c.list(); 
-		ArrayList<String> frases= new ArrayList<String>();
+		CriteriaBuilder cb1 = session.getCriteriaBuilder();
+		CriteriaQuery<Robotica> criteriaQuery = cb1.createQuery(Robotica.class);
+		Root<Robotica> tabla = criteriaQuery.from(Robotica.class);
+		//criteriaQuery.select(tabla).where(cb1.equal(tabla.get("alias"), alias));
+			
+		List<Robotica> lista = session.createQuery(criteriaQuery).getResultList();
+
+		//Criteria c= session.createCriteria(Usuario.class);
+		//List<Usuario> lista= (List<Usuario>) c.list(); 
+		
+		
 		if(numeroDeFrase>0 && numeroDeFrase<lista.size())
-		return frases.get(numeroDeFrase);
+			return	lista.get(numeroDeFrase).getFrase();
 		return "Numero de frase incorrecta";
 	}
 	
 	public String obtenerFraseRandom() {
-		Criteria c= session.createCriteria(Robotica.class);
-		List<Robotica> lista= (List<Robotica>) c.list(); 
+		CriteriaBuilder cb1 = session.getCriteriaBuilder();
+		CriteriaQuery<Robotica> criteriaQuery = cb1.createQuery(Robotica.class);
+		Root<Robotica> tabla = criteriaQuery.from(Robotica.class);
+		//criteriaQuery.select(tabla).where(cb1.equal(tabla.get("alias"), alias));
+			
+		List<Robotica> lista = session.createQuery(criteriaQuery).getResultList();
+
+		//Criteria c= session.createCriteria(Usuario.class);
+		//List<Usuario> lista= (List<Usuario>) c.list(); 
+		
 		
 		Random random=new Random(System.currentTimeMillis());
 		return lista.get(random.nextInt(lista.size())).getFrase();
