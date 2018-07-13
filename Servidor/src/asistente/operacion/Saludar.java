@@ -8,7 +8,7 @@ import asistente.clase.Pedido;
 public class Saludar implements Operacion{
 
 	private Operacion siguiente;
-
+	
 	@Override
 	public void siguiente(Operacion siguiente) {
 		this.siguiente = siguiente;		

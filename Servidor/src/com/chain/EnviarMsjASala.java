@@ -18,13 +18,13 @@ public class EnviarMsjASala extends Chain {
 	public EnviarMsjASala(ArrayList<Sala> _salas) {
 		salas = _salas;
 		nombreAsistente = new String("jenkins");
-		
+		asistente = new Asistente(nombreAsistente);
 	}
 
 	@Override
 	public void manejarPeticion(Mensaje mensaje) {
 		if (mensaje.getComando().equals(Comandos.MensajeASala)) {
-			asistente = new Asistente(mensaje.getEmisor(),nombreAsistente);
+			asistente.setCliente(mensaje.getEmisor());
 			mensaje.imprimirAConsola();
 			String devuelve = asistente.escuchar(mensaje.getInformacion());
 			
