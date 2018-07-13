@@ -4,8 +4,12 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.dataAccess.DAChuck;
+import com.modelo.ChuckNorris;
 
 import asistente.clase.Pedido;
 
@@ -13,12 +17,13 @@ public class ChuckNorrisFacts implements Operacion{
 
 	private Operacion siguiente;
 	
-	private String[] v_ChuckNorrisFacts;
+//	private String[] v_ChuckNorrisFacts;
 	private int contador_v_ChuckNorrisFacts = 0;
 	private int contadorChuck = 0;
+	private List<ChuckNorris> chuckNorrisFacts;
 	
 	public ChuckNorrisFacts() {
-		v_ChuckNorrisFacts = new String[100];
+		/*v_ChuckNorrisFacts = new String[100];
 		
 		File txt_CNF = new File("ChuckNorrisFacts_txt/ChuckNorrisFacts.txt");
 		FileReader r_CNF;
@@ -35,7 +40,10 @@ public class ChuckNorrisFacts implements Operacion{
 			r_CNF.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}*/
+		DAChuck daChuck = new DAChuck();
+		chuckNorrisFacts = daChuck.obtenerFrases();
+		contador_v_ChuckNorrisFacts = chuckNorrisFacts.size();
 	}
 	
 	@Override
@@ -52,7 +60,8 @@ public class ChuckNorrisFacts implements Operacion{
 		Matcher matcher = pattern.matcher(pedido.getMensaje());
 		while(matcher.find()) {
 			if(matcher.matches()) {
-				String fact = v_ChuckNorrisFacts[contadorChuck++ % contador_v_ChuckNorrisFacts];
+				//String fact = v_ChuckNorrisFacts[contadorChuck++ % contador_v_ChuckNorrisFacts];
+				String fact = chuckNorrisFacts.get(contadorChuck++ % contador_v_ChuckNorrisFacts).getFrase();
 				return "" + pedido.getNameUsuario() + ", " + fact;
 			}
 		}
