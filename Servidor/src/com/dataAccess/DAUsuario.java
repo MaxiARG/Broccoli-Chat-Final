@@ -42,6 +42,7 @@ public class DAUsuario {
 		for(Usuario u: lista) {
 			if(u.getNombre().equals(nombre) && u.getPassword().equals(pass)) return true;
 		}
+		
 		return false;
 		
 	}
