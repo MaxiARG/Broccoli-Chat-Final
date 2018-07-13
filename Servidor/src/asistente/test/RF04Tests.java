@@ -12,7 +12,7 @@ import org.junit.Test;
 import asistente.clase.Asistente;
 
 public class RF04Tests {
-
+	//ARREGLAR LA FECHA, COMENTAR LA LINEA INDIECAD:
 	public final static String USUARIO = "delucas";
 	public final static Date FECHA_HORA = new GregorianCalendar(2018, 3, 1, 15, 15, 0).getTime();
 	
@@ -20,7 +20,7 @@ public class RF04Tests {
 	
 	@Before
 	public void setup() {
-		jenkins = new Asistente("jenkins");
+		jenkins = new Asistente("delucas", "jenkins");
 	}
 	
 	@Test

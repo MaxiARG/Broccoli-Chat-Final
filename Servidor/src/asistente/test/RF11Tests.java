@@ -14,7 +14,7 @@ public class RF11Tests {
 
 	@Before
 	public void setup() {
-		jenkins = new Asistente("jenkins");
+		jenkins = new Asistente("delucas", "jenkins");
 	}
 
 	@Test
