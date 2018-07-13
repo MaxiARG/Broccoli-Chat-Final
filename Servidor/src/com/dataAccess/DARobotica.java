@@ -22,7 +22,7 @@ public class DARobotica {
 		session = ConectorSingleton.getInstance().getSession();
 	}
 	
-	public ArrayList<String> obtenerTodasLasFrase() {
+	public List<Robotica> obtenerTodasLasFrase() {
 		CriteriaBuilder cb1 = session.getCriteriaBuilder();
 		CriteriaQuery<Robotica> criteriaQuery = cb1.createQuery(Robotica.class);
 		Root<Robotica> tabla = criteriaQuery.from(Robotica.class);
@@ -33,12 +33,12 @@ public class DARobotica {
 		//Criteria c= session.createCriteria(Usuario.class);
 		//List<Usuario> lista= (List<Usuario>) c.list(); 
 		
-		ArrayList<String> frases= new ArrayList<String>();
+	/*	ArrayList<String> frases= new ArrayList<String>();
 		
 		for(Robotica r: lista) {
 			frases.add(r.getFrase());
-		}
-		return frases;
+		}*/
+		return lista;
 		
 	}
 	public String obtenerFraseNumero(int numeroDeFrase) {
