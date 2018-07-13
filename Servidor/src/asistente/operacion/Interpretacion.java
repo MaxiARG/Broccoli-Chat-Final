@@ -31,7 +31,7 @@ public class Interpretacion implements Operacion{
 		Operacion ChuckNorrisFacts = new ChuckNorrisFacts();
 		Operacion Deuda = new Deuda();
 		Operacion RecordarEventos = new RecordarEventos(); //Punto 16
-		Operacion Busqueda = new Busqueda(); //20
+		Operacion Busqueda = new BusquedaGoogle(); //20
 		Operacion Noticias= new Noticias(); //17
 		Operacion Youtube= new Youtube(); //21
 		Operacion Default = new Default();
