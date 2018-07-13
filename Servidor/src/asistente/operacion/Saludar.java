@@ -19,11 +19,20 @@ public class Saludar implements Operacion{
 		String regex = ".*(?:hola|buen dia|buenos dias|buenas|que tal|tardes|noches|hey).*";
 		Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
 		Matcher matcher = pattern.matcher(pedido.getMensaje());
+		String regexP = ".*(?:todo bien).*";
+		Pattern patternP = Pattern.compile(regexP, Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+		Matcher matcherP = patternP.matcher(pedido.getMensaje());
+		while(matcherP.find()) {
+			if(matcherP.matches()) {
+				return  pedido.getNameUsuario() + " que onda perro.";
+			}
+		}
 		while(matcher.find()) {
 			if(matcher.matches()) {
 				return "¡Hola, " + pedido.getNameUsuario() + "!";
 			}
 		}
+		
 		return siguiente.calcular(pedido);
 	}
 

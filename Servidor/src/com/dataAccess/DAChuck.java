@@ -18,7 +18,7 @@ public class DAChuck {
 		session = ConectorSingleton.getInstance().getSession();
 	}
 	
-	public String obtenerFrase() {
+	public List<ChuckNorris> obtenerFrases() {
 		CriteriaBuilder cb1 = session.getCriteriaBuilder();
 		CriteriaQuery<ChuckNorris> criteriaQuery = cb1.createQuery(ChuckNorris.class);
 		Root<ChuckNorris> tabla = criteriaQuery.from(ChuckNorris.class);
@@ -26,7 +26,6 @@ public class DAChuck {
 			
 		List<ChuckNorris> lista = session.createQuery(criteriaQuery).getResultList();
 		
-		Random random=new Random(System.currentTimeMillis());
-		return lista.get(random.nextInt(lista.size())).getFrase();
+		return lista;
 	}
 }
