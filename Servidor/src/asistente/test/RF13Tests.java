@@ -25,6 +25,8 @@ public class RF13Tests {
 				"¡Hola, @delucas!",
 				jenkins.escuchar("Hola @jenkins.")
 			);
+		
+
 
 		Assert.assertEquals(
 				"@delucas, Chuck Norris arrojó una granada y mató a 50 personas, luego explotó.",
@@ -87,7 +89,7 @@ public class RF13Tests {
 			);
 
 		Assert.assertEquals(
-				"@delucas, Chuck Norris es la razón por la que Waldo se está escondiendo.",
+				"@delucas, Chuck Norris es la razón por la que Wally se está escondiendo.",
 				jenkins.escuchar("@jenkins dime otra historia de Chuck Norris")
 			);
 
@@ -95,6 +97,10 @@ public class RF13Tests {
 				"@delucas, El tipo de sangre de Chuck Norris es AK-47.",
 				jenkins.escuchar("@jenkins dime otra historia de Chuck Norris")
 			);
+		
+		Assert.assertEquals("@delucas, Una vez Chuck Norris se comio un cubo de Rubick, y lo cago resuelto.", 
+				jenkins.escuchar("@jenkins dime otra historia de Chuck Norris"));
+		
 
 		Assert.assertEquals(
 				"@delucas, Chuck Norris arrojó una granada y mató a 50 personas, luego explotó.",
@@ -110,6 +116,8 @@ public class RF13Tests {
 				"@delucas, Chuck Norris puede recoger naranjas de un manzano y hacer la mejor limonada que haya probado en su vida.",
 				jenkins.escuchar("@jenkins dime otra historia de Chuck Norris")
 			);
+		
+
 
 
 
