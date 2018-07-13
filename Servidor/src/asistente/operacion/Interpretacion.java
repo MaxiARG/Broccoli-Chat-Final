@@ -19,8 +19,8 @@ public class Interpretacion implements Operacion{
 	public Interpretacion() {
 		
 		Operacion NoDirigidoAsistente = new NoDirigidoAsistente();
-		Operacion Saludar = new Saludar();
-		Operacion Agradecer = new Agradecer();
+		Operacion Saludar = new Saludar(); //1
+		Operacion Agradecer = new Agradecer(); //2
 		Operacion FechaActual = new FechaActual();
 		Operacion FechaNoActual = new FechaNoActual();
 		Operacion Calculo = new Calculo();
@@ -30,6 +30,8 @@ public class Interpretacion implements Operacion{
 		Operacion ChuckNorrisFacts = new ChuckNorrisFacts();
 		Operacion Deuda = new Deuda();
 		Operacion RecordarEventos = new RecordarEventos(); //Punto 16
+		Operacion Busqueda = new Busqueda(); //20
+		Operacion Noticias= new Noticias(); //17
 		Operacion Default = new Default();
 		
 		this.siguiente(NoDirigidoAsistente);
@@ -44,7 +46,9 @@ public class Interpretacion implements Operacion{
 		LeyesRobotica.siguiente(ChuckNorrisFacts);
 		ChuckNorrisFacts.siguiente(Deuda);
 		Deuda.siguiente(RecordarEventos);
-		RecordarEventos.siguiente(Default);
+		RecordarEventos.siguiente(Busqueda);
+		Busqueda.siguiente(Noticias);
+		Noticias.siguiente(Default);
 		
 		
 
