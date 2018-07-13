@@ -486,8 +486,8 @@ public class Main extends JFrame {
 		
 		btnBuscarInternet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BusquedaInet b = new BusquedaInet(textPalabraClave.getText(), Internet.BUSQUEDA);
 				
+				BusquedaInet b = new BusquedaInet(textPalabraClave.getText(), Internet.BUSQUEDA);
 				ArrayList<Busqueda> resultado = b.obtenerBusqueda();
 				
 				textAreaResultadoBusqueda.setText(resultado.get(0).getExtracto());
