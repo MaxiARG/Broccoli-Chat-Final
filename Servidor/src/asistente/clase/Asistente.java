@@ -29,5 +29,10 @@ public class Asistente{
 		Pedido pedido = new Pedido(mensaje, nameUsuario, nameAsistente, db);
 		return interpretacion.calcular(pedido);
 	}
-
+	
+	public void setCliente(String nombreCliente){
+		USUARIO = nombreCliente;
+		this.nameUsuario = "@"+USUARIO;
+	}
+	
 }
