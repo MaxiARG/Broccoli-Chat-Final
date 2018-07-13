@@ -33,6 +33,7 @@ public class Interpretacion implements Operacion{
 		Operacion RecordarEventos = new RecordarEventos(); //Punto 16
 		Operacion Busqueda = new Busqueda(); //20
 		Operacion Noticias= new Noticias(); //17
+		Operacion Youtube= new Youtube(); //21
 		Operacion Default = new Default();
 		
 		this.siguiente(NoDirigidoAsistente);
@@ -49,7 +50,8 @@ public class Interpretacion implements Operacion{
 		Deuda.siguiente(RecordarEventos);
 		RecordarEventos.siguiente(Busqueda);
 		Busqueda.siguiente(Noticias);
-		Noticias.siguiente(Default);
+		Noticias.siguiente(Youtube);
+		Youtube.siguiente(Default);
 		
 		
 

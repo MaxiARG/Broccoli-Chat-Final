@@ -166,6 +166,7 @@ public class GUI_Lobby extends JFrame {
 		chatLobby.setEditable(false);
 		chatLobby.setToolTipText("Sala publica. Todos podran leer lo que escribes aqui.");
 		chatLobby.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 16));
+//		chatLobby.setContentType("text/html");
 		desactivarEdicionChatLobby();
 		scrollPane_2.setViewportView(chatLobby);
 		
