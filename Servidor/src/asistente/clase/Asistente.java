@@ -31,7 +31,8 @@ public class Asistente{
 	}
 	
 	public void setCliente(String nombreCliente){
-		this.USUARIO = nombreCliente;
+		USUARIO = nombreCliente;
+		this.nameUsuario = "@"+USUARIO;
 	}
 	
 }
