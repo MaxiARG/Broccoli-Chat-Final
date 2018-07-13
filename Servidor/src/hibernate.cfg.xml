@@ -16,5 +16,6 @@
 		<mapping resource="com/modelo/Usuario.hbm.xml" />
 		<mapping resource="com/modelo/ChuckNorris.hbm.xml" />
 		<mapping resource="com/modelo/Robotica.hbm.xml" />
+		<mapping resource="com/modelo/Evento.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

@@ -9,7 +9,7 @@
 	<classpathentry kind="lib" path="Dep/gradle-ivyxml-plugin-0.3.2.jar"/>
 	<classpathentry kind="lib" path="Dep/gson-2.8.4.jar"/>
 	<classpathentry kind="lib" path="Dep/hibernate-commons-annotations-5.0.1.Final.jar"/>
-	<classpathentry kind="lib" path="Dep/hibernate-core-5.2.11.Final.jar"/>
+	<classpathentry kind="lib" path="Dep/hibernate-core-5.2.11.Final.jar" sourcepath="D:/Users/ALBORN~1/AppData/Local/Temp/.org.sf.feeling.decompiler1531488454652/source/hibernate-core-5.2.11.Final-sources.jar"/>
 	<classpathentry kind="lib" path="Dep/hibernate-entitymanager-5.1.0.Final.jar"/>
 	<classpathentry kind="lib" path="Dep/hibernate-entitymanager.jar"/>
 	<classpathentry kind="lib" path="Dep/hibernate-jpa-2.1-api-1.0.0.Final.jar"/>
