@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+      "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.modelo.CampoEvento" table="Eventos">
+        <id column="IDEvento" name="id" type="int" >
+          <generator class="increment"/>
+            </id>
+        <property column="Descripcion" name="descripcion" type="string" />
+        <property column="Fecha" name="fechaString" type="string" />
+        <property column="Usuario" name="usuario" type="string" />
+    </class>
+</hibernate-mapping>

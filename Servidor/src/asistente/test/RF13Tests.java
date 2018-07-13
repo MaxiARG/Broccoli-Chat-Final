@@ -87,7 +87,7 @@ public class RF13Tests {
 			);
 
 		Assert.assertEquals(
-				"@delucas, Chuck Norris es la razón por la que Waldo se está escondiendo.",
+				"@delucas, Chuck Norris es la razón por la que Wally se está escondiendo.",
 				jenkins.escuchar("@jenkins dime otra historia de Chuck Norris")
 			);
 
@@ -96,6 +96,9 @@ public class RF13Tests {
 				jenkins.escuchar("@jenkins dime otra historia de Chuck Norris")
 			);
 
+		Assert.assertEquals("@delucas, Una vez Chuck Norris se comio un cubo de Rubick, y lo cago resuelto.", 
+				jenkins.escuchar("@jenkins dime otra historia de Chuck Norris"));
+		
 		Assert.assertEquals(
 				"@delucas, Chuck Norris arrojó una granada y mató a 50 personas, luego explotó.",
 				jenkins.escuchar("@jenkins dime otra historia de Chuck Norris")
