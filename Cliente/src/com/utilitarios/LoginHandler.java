@@ -92,7 +92,7 @@ public class LoginHandler implements Runnable {
 							styledDocument=lobbyGui.getChatLobby().getStyledDocument();
 							
 							try {
-								styledDocument.insertString(styledDocument.getLength(), "Bienvenido a la sala.", null);
+								styledDocument.insertString(styledDocument.getLength(), "Bienvenido a la sala.\n", null);
 							} catch (BadLocationException e) {
 								e.printStackTrace();
 							}
