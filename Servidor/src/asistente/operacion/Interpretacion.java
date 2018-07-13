@@ -2,6 +2,7 @@ package asistente.operacion;
 
 import asistente.clase.Pedido;
 
+
 public class Interpretacion implements Operacion{
 
 	private Operacion siguiente;

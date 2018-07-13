@@ -128,10 +128,11 @@ public class Evento implements Comparable<Evento> {
 		return true;
 
 	}
-	
+	@Override
 	public String toString()
 	{
-		return this.fecha.toString() + " " + this.descripcion;
+	
+		return this.fecha.fechaToString("DD/MM/AAAA") + " "+ this.fecha.hora("HH:MM:SS") + " " + this.descripcion;
 	}
 
 	@Override
