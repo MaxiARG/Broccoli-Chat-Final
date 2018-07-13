@@ -19,6 +19,7 @@ public class Busqueda {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+	
 	@Override
 	public String toString() {
 		return "Busqueda [extracto=" + extracto + ", url=" + url + "]";
