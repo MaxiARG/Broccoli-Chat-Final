@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.modelo.CampoEvento;
+
 import asistente.clase.Pedido;
 import asistente.util.Fecha;
 
@@ -38,7 +40,7 @@ public class RecordarEventos implements Operacion {
 					return siguiente.calcular(pedido);
 				}
 				
-				Evento e = new Evento(fecha, desc);
+				Evento e = new Evento(fecha, desc,pedido.getNameUsuario());
 				if(e.guardarEvento()) {
 					return pedido.getNameUsuario() + " Evento agregado";
 				} else {
@@ -53,9 +55,11 @@ public class RecordarEventos implements Operacion {
 		Matcher matcher_proximo = pattern_proximo.matcher(pedido.getMensaje());
 		while(matcher_proximo.find()) {
 			if(matcher_proximo.matches()) {
-				Evento e = new Evento().proximoEvento();
-				if(e != null) {
-					return pedido.getNameUsuario() + " El próximo evento es: " + e.toString().trim() + " y faltan " + e.getFecha().diferenciaDeDias() + " días";
+				Evento e = new Evento();
+				e.setUsuario(pedido.getNameUsuario());
+				CampoEvento cEvento = e.proximoEvento();
+				if(cEvento != null) {
+					return pedido.getNameUsuario() + " El próximo evento es: " + cEvento.toString().trim() + " y faltan " + cEvento.getFecha().diferenciaDeDias() + " días";
 				}
 				else {
 					return pedido.getNameUsuario() + " No tenés eventos";

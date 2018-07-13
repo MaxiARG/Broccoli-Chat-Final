@@ -6,7 +6,11 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
+
+import com.dataAccess.DAEvento;
+import com.modelo.CampoEvento;
 
 import asistente.util.Fecha;
 
@@ -14,20 +18,23 @@ public class Evento implements Comparable<Evento> {
 	private int id;
 	private String descripcion;
 	private Fecha fecha;
-
+	private String usuario;
+	private List<CampoEvento> eventos;
+	
 	public Evento() { }
 	
 	
-	public Evento(Fecha fecha, String descripcion) {
+	public Evento(Fecha fecha, String descripcion, String usuario) {
 		this.descripcion = descripcion;
 		this.fecha = fecha;
+		this.setUsuario(usuario);
 	}
 	
-	public Evento(int id, Fecha fecha, String descripcion)
+	/*public Evento(int id, Fecha fecha, String descripcion)
 	{
 		this(fecha,descripcion);
 		this.id=id;
-	}
+	}*/
 	
 	public void setId(int id)
 	{
@@ -60,9 +67,9 @@ public class Evento implements Comparable<Evento> {
 	}
 	
 	//@SuppressWarnings({ "deprecation", "finally" })
-	public Evento proximoEvento()
+	public CampoEvento proximoEvento()
 	{
-		ArrayList<Evento> eventos = new ArrayList<Evento>();
+		/*ArrayList<Evento> eventos = new ArrayList<Evento>();
 
 		Scanner sc;
 		try {
@@ -95,12 +102,18 @@ public class Evento implements Comparable<Evento> {
 			return eventos.get(0);
 		} catch (FileNotFoundException e) {
 			return null;
-		}
+		}*/
+		DAEvento daEvento = new DAEvento();
+		eventos = daEvento.obtenerEventos(getUsuario());
+		Collections.sort(eventos);
+		if(!eventos.isEmpty())
+		return eventos.get(0);
+		return null;
 	}
 	
 	public boolean guardarEvento()
 	{
-		File path_event = new File("eventos.dat");
+	/*	File path_event = new File("eventos.dat");
 		
 		FileWriter fichero = null;
         PrintWriter pw = null;
@@ -123,8 +136,14 @@ public class Evento implements Comparable<Evento> {
            } catch (Exception e2) {
         	   return false;
            }
-        }
-		
+        }*/
+		DAEvento daEvento = new DAEvento();
+		CampoEvento nuevoCampo = new CampoEvento();
+		nuevoCampo.setDescripcion(descripcion);
+		nuevoCampo.setFecha(fecha);
+		nuevoCampo.setFechaString(fecha.fechaToString("DD/MM/AAAA") + " " +this.fecha.hora("HH:MM:SS"));
+		nuevoCampo.setUsuario(getUsuario());
+		daEvento.agregarEvento(nuevoCampo);
 		return true;
 
 	}
@@ -138,6 +157,16 @@ public class Evento implements Comparable<Evento> {
 	@Override
 	public int compareTo(Evento o) {
 		return this.fecha.compareTo(o.fecha);
+	}
+
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 }
