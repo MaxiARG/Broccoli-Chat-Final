@@ -116,10 +116,8 @@ public class Main extends JFrame {
 							try {
 								desktop.browse(new URI(lblUrl.getText()));
 							} catch (IOException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							} catch (URISyntaxException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 					}
