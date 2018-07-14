@@ -34,6 +34,7 @@ public class Interpretacion implements Operacion{
 		Operacion Busqueda = new BusquedaGoogle(); //20
 		Operacion Noticias= new Noticias(); //17
 		Operacion Youtube= new Youtube(); //21
+		Operacion DameClima= new PedirClima();//9
 		Operacion Default = new Default();
 		
 		this.siguiente(NoDirigidoAsistente);
@@ -51,7 +52,8 @@ public class Interpretacion implements Operacion{
 		RecordarEventos.siguiente(Busqueda);
 		Busqueda.siguiente(Noticias);
 		Noticias.siguiente(Youtube);
-		Youtube.siguiente(Default);
+		Youtube.siguiente(DameClima);
+		DameClima.siguiente(Default);
 		
 		
 
