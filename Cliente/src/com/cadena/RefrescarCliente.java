@@ -20,7 +20,6 @@ public class RefrescarCliente extends ChainCliente {
 	public void manejarPeticion(Mensaje msj) {
 
 		if (msj.getComando().equals(Comandos.RefrescarClientes)) {
-			System.out.println("Refresh Recibio: " + msj.getComando());
 			String[] valores = msj.getInformacion().split(";");
 			for (Sala salaActual : copiaSalas) {
 				GUI_Sala guiSala = salaActual.getSalaGui();

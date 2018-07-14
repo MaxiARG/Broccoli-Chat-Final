@@ -26,7 +26,6 @@ public class AgregarClienteASala extends Chain{
 	public void manejarPeticion(Mensaje mensaje) {
 		
 		if (mensaje.getComando().equals(Comandos.InvitacionASalaPublicaAceptada)||mensaje.getComando().equals(Comandos.InvitacionASalaPrivadaAceptada)) {
-			System.out.println("AgregarCLienteASala Recibio: "+mensaje.getComando());
 			
 			String[] valores = mensaje.getInformacion().split(";");
 			String nombreCliente = valores[0];

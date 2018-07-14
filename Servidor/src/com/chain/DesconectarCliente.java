@@ -24,7 +24,6 @@ public class DesconectarCliente extends Chain{
 	@Override
 	public void manejarPeticion(Mensaje mensaje) {
 		if (mensaje.getComando().equals(Comandos.LOGOUT)){
-			System.out.println("DesconectarCliente Recibio: "+mensaje.getComando());
 			Cliente clienteSaliente=getClientePorNombre(mensaje.getInformacion());
 			sacarClienteDeSalas(clienteSaliente);
 			clientesEnLobby.remove(clienteSaliente);

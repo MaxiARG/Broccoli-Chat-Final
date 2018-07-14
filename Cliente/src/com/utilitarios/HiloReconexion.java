@@ -31,7 +31,6 @@ public class HiloReconexion implements Runnable{
 					nuevoSocket = new Socket(IP_SERVIDOR,Integer.parseInt(PUERTO_SERVIDOR));
 					if(nuevoSocket!=null && nuevoSocket.isConnected()) {
 						socket=nuevoSocket;
-						System.out.println(gui==null);
 						gui.setEstado("");
 						gui.setEstado("Estado: Servidor Online");
 						activado=false;
@@ -41,11 +40,9 @@ public class HiloReconexion implements Runnable{
 						tLoginHandler.start();
 						
 					}else {
-						System.out.println("SLeeping");
 						Thread.sleep(2000); //Cada 2 segundos intenta conectarse nuevamente
 					}
 				} catch (NumberFormatException | IOException | InterruptedException e1) {
-					System.out.println("SLeeping");
 					try {
 						Thread.sleep(2000);
 						gui.setEstado("");

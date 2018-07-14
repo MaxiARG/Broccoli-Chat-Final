@@ -24,7 +24,6 @@ public class CrearMP extends Chain{
 	@Override
 	public void manejarPeticion(Mensaje mensaje) {
 		if (mensaje.getComando().equals(Comandos.CrearMP)){
-			System.out.println("CrearMP Recibio: "+mensaje.getComando());
 			String valores[] = mensaje.getInformacion().split(";");
 			String nombreEmisor = valores[0];
 			String nombreDestinatario = valores[1];

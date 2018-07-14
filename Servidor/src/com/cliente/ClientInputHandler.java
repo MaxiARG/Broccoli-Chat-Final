@@ -40,7 +40,9 @@ public class ClientInputHandler implements Runnable {
 						mensaje= recibirMensaje();
 						controladorServidor.manejarMensaje(mensaje);
 						
-				} catch (ClassNotFoundException | IOException e) {System.out.println("CIH cerrado"); conectado=false;}
+				} catch (ClassNotFoundException | IOException e) {
+					conectado=false;
+					}
 
 		}
 	}

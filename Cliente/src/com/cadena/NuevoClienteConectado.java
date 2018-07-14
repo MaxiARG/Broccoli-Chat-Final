@@ -24,7 +24,6 @@ public class NuevoClienteConectado extends ChainCliente {
 	public void manejarPeticion(Mensaje mensaje) {
 		
 		if(mensaje.getComando().equals(Comandos.ClienteNuevo)) {
-			System.out.println("NuevoClienteConectado Recibio: " + mensaje.getComando());
 			
 			String usuarioEntrante= mensaje.getInformacion();
 			copiaClientesEnLobby.add(usuarioEntrante);

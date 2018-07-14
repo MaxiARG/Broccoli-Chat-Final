@@ -25,7 +25,6 @@ public class EnviarMsjASala extends Chain {
 	public void manejarPeticion(Mensaje mensaje) {
 		if (mensaje.getComando().equals(Comandos.MensajeASala)) {
 			asistente.setCliente(mensaje.getEmisor());
-			mensaje.imprimirAConsola();
 			String devuelve = asistente.escuchar(mensaje.getInformacion());
 			
 			boolean mensajeJenkins=(!devuelve.contains("Disculpa... no entiendo el pedido") && 

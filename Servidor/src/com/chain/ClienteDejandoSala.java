@@ -18,7 +18,6 @@ public class ClienteDejandoSala extends Chain{
 	@Override
 	public void manejarPeticion(Mensaje mensaje) {
 		if (mensaje.getComando().equals(Comandos.ClienteDejandoSala)) {
-			System.out.println("DejandoSala Recibio: "+mensaje.getComando());
 			String[] valores = mensaje.getInformacion().split(";");
 			String nombreCliente = valores[0];
 			Integer idSala = Integer.valueOf(valores[2]);
