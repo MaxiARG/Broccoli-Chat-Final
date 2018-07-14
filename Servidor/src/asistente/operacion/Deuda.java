@@ -175,7 +175,6 @@ public class Deuda implements Operacion {
 		matcher = pattern.matcher(pedido.getMensaje());
 		while(matcher.find()) {
 			if(matcher.matches()) {
-//				System.out.println("se ejecuto");
 				String[] v_usuarios = {pedido.getNameUsuario(), matcher.group(1), matcher.group(2)};
 				pedido.getDB().CtaCte_DeudasGrupales(v_usuarios, Float.parseFloat(matcher.group(3)), matcher.group(4));
 				return pedido.getNameUsuario() + " anotado.";
@@ -187,7 +186,6 @@ public class Deuda implements Operacion {
 		matcher = pattern.matcher(pedido.getMensaje());
 		while(matcher.find()) {
 			if(matcher.matches()) {
-//				System.out.println("se ejecuto");
 				String[] v_usuarios = {pedido.getNameUsuario(), matcher.group(1), matcher.group(2)};
 				pedido.getDB().CtaCte_DeudasGrupales(v_usuarios, Float.parseFloat(matcher.group(3)), pedido.getNameUsuario());
 				return pedido.getNameUsuario() + " anotado.";

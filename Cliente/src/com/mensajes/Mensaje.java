@@ -53,7 +53,6 @@ public class Mensaje implements Serializable {
 	}
 	
 	public void imprimirAConsola() {
-		
 		System.out.println("Comando:"+comando+"|inform:"+informacion+"|SalaID:"+salaID+"|Emisor:"+emisor);
 	}
 	

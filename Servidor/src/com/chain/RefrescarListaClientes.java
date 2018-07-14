@@ -18,7 +18,6 @@ public class RefrescarListaClientes extends Chain{
 	@Override
 	public void manejarPeticion(Mensaje mensaje) {
 		if (mensaje.getComando().equals(Comandos.RefrescarClientes)) {
-			System.out.println("Refrescar clientes recibio: "+mensaje.getComando());
 			String nombreClienteSolicitante = mensaje.getInformacion();
 			StringBuilder clientesConectados = new StringBuilder();
 			Cliente clienteReceptor=null;

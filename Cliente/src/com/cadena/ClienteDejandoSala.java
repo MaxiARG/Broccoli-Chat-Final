@@ -19,7 +19,6 @@ public class ClienteDejandoSala extends ChainCliente{
 	@Override
 	public void manejarPeticion(Mensaje msj) {
 		if(msj.getComando().equals(Comandos.ClienteDejandoSala)) {
-			System.out.println("ClienteDejando sala Recibio: " + msj.getComando());
 			String[] valores = msj.getInformacion().split(";");
 			String clienteSaliendo = valores[0];
 			String nombreSala = valores[1];

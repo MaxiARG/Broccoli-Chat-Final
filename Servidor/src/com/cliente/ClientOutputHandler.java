@@ -74,7 +74,6 @@ public class ClientOutputHandler implements Runnable{
 			objectOut.close();
 			socket.close();
 		} catch (IOException e) {
-			System.out.println("Socket cerrado , ver cerrar tambien OIS OOS");
 			e.printStackTrace();
 		}
 	}

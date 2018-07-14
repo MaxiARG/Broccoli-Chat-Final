@@ -37,19 +37,17 @@ public class HSQL {
 	}
 	
 	public void desconectar() {
-		// Liberamos recursos y cerramos la conexión
 		try {
 			st.executeUpdate("SHUTDOWN");
-//			if(rst1.isClosed())
-//				rst1.close();
 			st.close();
 			conn.close();
 		} catch (SQLException e1) { 
-			// Cerramos la conexión
 			try {
 				st.close();
 				conn.close();
-			} catch (SQLException e2) {System.out.println(4); }
+			} catch (SQLException e2) {
+				e2.printStackTrace();
+			}
 		}
 	}
 	

@@ -20,7 +20,6 @@ public class InvitarUsuario extends Chain{
 	public void manejarPeticion(Mensaje mensaje) {
 		String comando=mensaje.getComando();
 		if (comando.equals(Comandos.InvitarUsuarioSalaPrivada)||comando.equals(Comandos.InvitarUsuarioSalaPublica)) {
-			System.out.println("InvitarUsuario Recibio: "+mensaje.getComando());
 			String[] valores = mensaje.getInformacion().split(";");
 			String nombre = valores[0];
 

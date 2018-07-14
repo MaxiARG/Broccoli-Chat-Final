@@ -9,7 +9,6 @@ public class Mensaje implements Serializable {
 	private String informacion;
 	private Integer salaID;
 	private String emisor;
-	
 	//#1
 	public Mensaje(String _comando,String _informacion,Integer salaID, String emisor) {
 		comando = _comando;
@@ -47,13 +46,6 @@ public class Mensaje implements Serializable {
 	public String getInformacion() {
 		return informacion;
 	}
-	
-	public void imprimirAConsola() {
-		
-		System.out.println("Comando:"+comando+"|inform:"+informacion+"|SalaID:"+salaID+"|Emisor:"+emisor);
-	}
-	
-	
 	
 	@Override
 	public String toString() {

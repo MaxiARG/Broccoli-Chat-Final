@@ -34,7 +34,6 @@ public class ClienteSaliendo extends ChainCliente {
 	public void manejarPeticion(Mensaje mensaje) {
 		
 			if(mensaje.getComando().equals(Comandos.ClienteSaliendo)) {
-				System.out.println("ClienteSaliendo recibio: "+ mensaje.getComando());
 				String nombreClienteSaliente=mensaje.getInformacion();
 				copiaClientesEnLobby.remove(nombreClienteSaliente);
 				lobbyGui.quitarCliente(nombreClienteSaliente);
@@ -42,10 +41,11 @@ public class ClienteSaliendo extends ChainCliente {
 				buscarYEliminarClienteDeSalas(nombreClienteSaliente);
 				
 				
-			}else {System.out.println("fin chain");}
+			}else {
+				System.out.println("fin chain");
+				}
 	}
 	private void buscarYEliminarClienteDeSalas(String nombreClienteSaliente) {
-		
 		
 			for(int i = 0 , cantSalas = copiaSalasDisponibles.size() ; i < cantSalas;i++){
 				Sala salaActual = copiaSalasDisponibles.get(i);
@@ -53,8 +53,6 @@ public class ClienteSaliendo extends ChainCliente {
 				if(salaActual.getCantidadConectados()==0) {
 					copiaSalasDisponibles.remove(i);
 					lobbyGui.quitarSala(salaActual.getNombreSala());
-					//No me tengo que preocupar por el GUI, xq lo cierra el cliente al cerrar la app
-					
 				}
 			}
 	

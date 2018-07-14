@@ -25,8 +25,6 @@ public class ExisteSala extends ChainCliente{
 	@Override
 	public void manejarPeticion(Mensaje msj) {
 		if(msj.getComando().equals(Comandos.ExisteSala)) {
-			System.out.println("ExisteSala Recibio: " + msj.getComando());
-		
 			Integer idSala = Integer.valueOf(msj.getSalaID());
 			
 			for(Sala salaActual : salas) {

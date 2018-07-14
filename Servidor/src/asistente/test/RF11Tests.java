@@ -20,7 +20,6 @@ public class RF11Tests {
 	@Test
 	public void unidadesDeMasa() {
 		
-		
 		Assert.assertEquals(
 				"@delucas 1 kilo equivale a 1000 gramos",
 				jenkins.escuchar("@jenkins cuántos gramos son 1 kilo")

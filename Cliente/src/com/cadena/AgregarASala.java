@@ -26,7 +26,6 @@ public class AgregarASala extends ChainCliente{
 	public void manejarPeticion(Mensaje mensaje) {
 
 		if(mensaje.getComando().equals(Comandos.InvitacionASalaPublicaAceptada)||mensaje.getComando().equals(Comandos.InvitacionASalaPrivadaAceptada)) {
-		System.out.println("AgregarASala Recibio: " + mensaje.getComando());
 			String[] valores = mensaje.getInformacion().split(";");
 			String clienteNuevo = valores[0];
 			Integer idSala = Integer.valueOf(valores[1]);
@@ -41,7 +40,6 @@ public class AgregarASala extends ChainCliente{
 					if(salaActual.meterCliente(clienteNuevo)) {
 						
 						crearGUISala=salaActual.getSalaGui()==null?true:false;
-						System.out.println("PARECE QUE LA SALA SIGUE CREADA");
 						break;
 					}
 					

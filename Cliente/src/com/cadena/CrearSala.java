@@ -28,8 +28,6 @@ public class CrearSala extends ChainCliente {
 
 		if (mensaje.getComando().equals(Comandos.SalaPrivCreadaExitosamente)
 				|| mensaje.getComando().equals(Comandos.SalaPubCreadaExitosamente)) {
-			System.out.println("CrearSala Recibio: " + mensaje.getComando());
-
 			String valores[] = mensaje.getInformacion().split(";");
 			String nombreSala = valores[0];
 			Integer idSala = Integer.valueOf(valores[1]);

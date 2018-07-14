@@ -9,7 +9,6 @@ import asistente.util.Clima;
 public class PedirClima implements Operacion{
 	private Operacion siguiente;
 
-
 	@Override
 	public String calcular(Pedido pedido) {
 			
@@ -30,9 +29,10 @@ public class PedirClima implements Operacion{
 			str.append("\n***  A sus Ordenes *** \n");
 			
 			return str.toString();
-		}else {
-			return siguiente.calcular(pedido);
 		}
+		
+		return siguiente.calcular(pedido);
+		
 	}
 
 	@Override

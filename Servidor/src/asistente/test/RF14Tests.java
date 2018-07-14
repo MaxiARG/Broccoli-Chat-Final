@@ -70,7 +70,7 @@ public class RF14Tests {
 				"@delucas anotado.",
 				jenkins.escuchar("@jenkins con @juan y @maria gastamos $300 y pagué yo")
 			);
-		//System.out.println(jenkins.escuchar("@jenkins cual es mi estado de deudas?"));
+		
 		Assert.assertEquals(
 				"@delucas @juan te debe $100. @maria te debe $100",
 				jenkins.escuchar("@jenkins cual es mi estado de deudas?")

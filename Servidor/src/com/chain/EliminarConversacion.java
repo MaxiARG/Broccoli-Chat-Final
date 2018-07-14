@@ -16,7 +16,6 @@ public class EliminarConversacion extends Chain{
 	@Override
 	public void manejarPeticion(Mensaje mensaje) {
 		if (mensaje.getComando().equals(Comandos.ClienteDejandoConver)) {
-			System.out.println("Cliente dejando conver recibio: "+mensaje.getComando());
 			String[] valores = mensaje.getInformacion().split(";");
 			Integer idSala = Integer.valueOf(valores[2]);
 			Integer valor = Integer.valueOf(valores[3]);
